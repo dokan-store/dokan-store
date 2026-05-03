@@ -6,202 +6,176 @@
 <title>Dokan Store</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:Arial;
-  background:linear-gradient(135deg,#f0f9ff,#e0f2fe);
-  color:#0f172a;
+  margin:0;
+  background:#f3f4f6;
 }
 
 /* Header */
-header{
-  background:white;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-header h1{color:#22c55e}
-
-/* Hero */
-.hero{
-  text-align:center;
-  padding:50px 20px;
-}
-.hero h2{
-  font-size:32px;
-}
-.hero p{
-  color:#64748b;
-}
-
-/* Timer */
-.timer{
-  background:#22c55e;
+.header{
+  background:#b91c1c;
   color:white;
-  padding:10px;
   text-align:center;
-  font-weight:bold;
+  padding:15px;
+  font-size:20px;
+}
+
+/* Banner */
+.banner{
+  background:linear-gradient(90deg,#ef4444,#991b1b);
+  color:white;
+  padding:20px;
+  text-align:center;
 }
 
 /* Products */
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
   padding:20px;
 }
 
-.product{
+.card{
   background:white;
+  padding:15px;
   border-radius:15px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
-  transition:.3s;
-}
-.product:hover{
-  transform:translateY(-6px);
+  text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.product img{
-  width:80px;
-  display:block;
-  margin:auto;
+.card img{
+  width:120px;
+  border-radius:15px;
 }
 
-select,button{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border-radius:10px;
-  border:none;
-}
-
-select{
-  background:#f1f5f9;
+.price{
+  font-size:18px;
+  margin:10px;
 }
 
 button{
-  background:#22c55e;
+  background:#dc2626;
   color:white;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  width:100%;
   cursor:pointer;
 }
 
-/* Notify */
-#notify{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:white;
-  padding:10px 15px;
-  border-radius:10px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+/* Phone Page */
+.phone-box{
   display:none;
+  padding:20px;
 }
 
-/* Footer */
-footer{
-  text-align:center;
+.input{
+  width:100%;
   padding:15px;
-  color:#64748b;
+  border-radius:15px;
+  border:2px solid #6366f1;
+  font-size:18px;
+  text-align:center;
+}
+
+.verify-btn{
+  background:linear-gradient(90deg,#6366f1,#8b5cf6);
+  margin-top:15px;
+}
+
+.desc{
+  background:#e5e7eb;
+  padding:15px;
+  border-radius:15px;
+  margin-top:20px;
+}
+
+/* Features */
+.features{
+  background:#b91c1c;
+  color:white;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  padding:20px;
+  text-align:center;
 }
 </style>
+
 </head>
 
 <body>
 
-<header>
-  <h1>Dokan Store 🚀</h1>
-  <div>📱 0917311459</div>
-</header>
+<div class="header">Dokan Store 🔥</div>
 
-<div class="timer">
-⏳ العرض ينتهي خلال: <span id="time">05:00</span>
+<div class="banner">
+اشترك في أفضل الخدمات 🔥 تسليم فوري ⚡
 </div>
 
-<section class="hero">
-  <h2>أفضل متجر اشتراكات رقمية في ليبيا 🇱🇾</h2>
-  <p>سرعة ⚡ جودة 💎 ضمان ✔️</p>
-</section>
+<!-- PRODUCTS -->
+<div class="products" id="products">
 
-<section class="products">
-
-<!-- Snap -->
-<div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/512px-Snapchat_logo.svg.png">
-<h3>Snapchat Plus</h3>
-<select id="snap">
-<option>3 شهور - 65</option>
-<option>6 شهور - 110</option>
-</select>
-<button onclick="order('Snapchat')">اطلب</button>
+<div class="card">
+<img src="https://i.imgur.com/2nCt3Sbl.jpg">
+<h3>Netflix 45 يوم</h3>
+<p>🔥 جودة 4K + حساب خاص</p>
+<div class="price">75 دينار</div>
+<button onclick="buy('Netflix 45 يوم')">اشترك الآن</button>
 </div>
 
-<!-- Netflix -->
-<div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
-<h3>Netflix</h3>
-<select id="netflix">
-<option>45 يوم - 75</option>
-</select>
-<button onclick="order('Netflix')">اطلب</button>
-</div>
-
-<!-- Shahid -->
-<div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Shahid_logo.svg">
+<div class="card">
+<img src="https://i.imgur.com/7yUvePIl.jpg">
 <h3>Shahid VIP</h3>
-<select id="shahid">
-<option>شهر - 35</option>
-</select>
-<button onclick="order('Shahid')">اطلب</button>
+<p>🎬 أفضل المسلسلات العربية</p>
+<div class="price">35 دينار</div>
+<button onclick="buy('Shahid VIP')">اشترك الآن</button>
 </div>
 
-</section>
+</div>
 
-<div id="notify"></div>
+<!-- PHONE PAGE -->
+<div class="phone-box" id="phonePage">
 
-<footer>
-© 2026 جميع الحقوق محفوظة
-</footer>
+<h2 style="text-align:center">📱 أدخل رقم هاتفك</h2>
 
-<!-- صوت -->
-<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+<input id="phone" class="input" placeholder="091XXXXXXX">
+
+<button class="verify-btn" onclick="send()">إرسال الطلب</button>
+
+<div class="desc">
+✔ رقمك محمي 🔒 <br>
+✔ تسليم فوري ⚡ <br>
+✔ دعم كامل 💬
+</div>
+
+</div>
+
+<!-- Features -->
+<div class="features">
+<div>✔ مصدر موثوق</div>
+<div>⚡ تسليم فوري</div>
+<div>💬 دعم ومتابعة</div>
+<div>🔒 منتجات مضمونة</div>
+</div>
 
 <script>
-function order(product){
-  document.getElementById("clickSound").play();
-  alert("تم الطلب ✅");
+let selected="";
 
-  let msg="السلام عليكم نبي "+product;
-  window.open("https://wa.me/218917311459?text="+msg);
+function buy(product){
+selected=product;
+document.getElementById("products").style.display="none";
+document.getElementById("phonePage").style.display="block";
 }
 
-/* Timer */
-let t=300;
-setInterval(()=>{
-let m=Math.floor(t/60);
-let s=t%60;
-document.getElementById("time").innerHTML=m+":"+(s<10?"0"+s:s);
-t--;
-if(t<0)t=300;
-},1000);
+function send(){
+let phone=document.getElementById("phone").value;
 
-/* Notifications */
-let names=["محمود","علي","سالم","يوسف"];
-let prods=["Snap","Netflix","Shahid"];
+let msg="طلب جديد:%0A"+selected+"%0Aرقم: "+phone;
 
-setInterval(()=>{
-let n=names[Math.floor(Math.random()*names.length)];
-let p=prods[Math.floor(Math.random()*prods.length)];
-
-let box=document.getElementById("notify");
-box.innerHTML="🔥 "+n+" اشترى "+p;
-box.style.display="block";
-
-setTimeout(()=>box.style.display="none",3000);
-},6000);
+window.open("https://wa.me/218917311459?text="+msg);
+}
 </script>
 
 </body>
