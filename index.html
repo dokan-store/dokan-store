@@ -1,192 +1,113 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dokan Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokan Store | دكان ستور</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --red: #A01F24; --black: #1a1a1a; --libyana-blue: #004f9f; }
+        body { font-family: 'Cairo', sans-serif; background: #f4f4f4; margin: 0; }
+        header { background: #fff; padding: 15px; text-align: center; border-bottom: 4px solid var(--red); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { font-size: 26px; font-weight: bold; color: var(--red); }
+        .container { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .card { background: #fff; border-radius: 15px; padding: 15px; text-align: center; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        .card img { width: 100%; border-radius: 10px; height: 160px; object-fit: cover; }
+        .price { font-size: 20px; font-weight: bold; color: var(--black); margin: 10px 0; }
+        .buy-btn { background: #000; color: #fff; padding: 10px; border-radius: 8px; text-decoration: none; display: block; font-weight: bold; font-size: 14px; }
+        
+        /* قسم طرق الدفع الليبية */
+        .payment-methods { background: #fff; padding: 25px; margin-top: 30px; text-align: center; border-top: 1px solid #ddd; }
+        .payment-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #555; }
+        .payment-icons { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .payment-icons img { height: 50px; filter: grayscale(20%); transition: 0.3s; }
+        .payment-icons img:hover { filter: grayscale(0%); transform: scale(1.1); }
+        .libyana-tag { color: var(--libyana-blue); font-weight: bold; display: block; margin-top: 5px; font-size: 12px; }
 
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#f1f5f9;
-}
-
-/* Header */
-.header{
-  background:white;
-  padding:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-.logo{
-  font-size:22px;
-  font-weight:bold;
-  color:#1e3a8a;
-}
-
-/* Banner */
-.banner{
-  background:linear-gradient(90deg,#1e3a8a,#3b82f6);
-  color:white;
-  padding:30px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.banner img{
-  width:120px;
-}
-
-/* Layout */
-.container{
-  display:flex;
-}
-
-/* Sidebar */
-.sidebar{
-  width:220px;
-  background:white;
-  padding:15px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-.sidebar h3{
-  margin-bottom:10px;
-}
-.sidebar div{
-  padding:10px;
-  border-radius:8px;
-  cursor:pointer;
-}
-.sidebar div:hover{
-  background:#e0e7ff;
-}
-
-/* Products */
-.products{
-  flex:1;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
-  padding:20px;
-}
-
-.card{
-  border-radius:15px;
-  padding:15px;
-  color:white;
-  position:relative;
-  overflow:hidden;
-}
-
-.card img{
-  width:80px;
-}
-
-.card h4{
-  margin:10px 0;
-}
-
-.price{
-  font-size:18px;
-  margin-bottom:10px;
-}
-
-button{
-  background:white;
-  color:black;
-  border:none;
-  padding:8px;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-/* Colors */
-.netflix{background:linear-gradient(135deg,#111827,#1e3a8a)}
-.shahid{background:linear-gradient(135deg,#16a34a,#22c55e)}
-.starz{background:linear-gradient(135deg,#0f172a,#3b82f6)}
-.watch{background:linear-gradient(135deg,#1e293b,#0ea5e9)}
-.osn{background:linear-gradient(135deg,#581c87,#9333ea)}
-.disney{background:linear-gradient(135deg,#0f172a,#2563eb)}
-
-/* Footer */
-.footer{
-  background:#1e3a8a;
-  color:white;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  padding:20px;
-  text-align:center;
-}
-</style>
-
+        .features { background: var(--red); color: #fff; display: grid; grid-template-columns: 1fr 1fr; padding: 20px; text-align: center; gap: 15px; margin-top: 0; }
+        .wa-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    </style>
 </head>
-
 <body>
 
-<div class="header">
-<div class="logo">Dokan Store 👑</div>
-<div>📱 0917311459</div>
-</div>
-
-<div class="banner">
-<div>
-<h2>Dokan Store - أفضل متجر اشتراكات رقمية</h2>
-<p>تسليم فوري ⚡ منتجات مضمونة 💎</p>
-</div>
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
-</div>
+<header><div class="logo">DOKAN STORE - دكان ستور</div></header>
 
 <div class="container">
+    <!-- نيتفليكس -->
+    <div class="card">
+        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bca1-0758418ff7a5/ada313b3-8321-4f10-91c2-c0e816a75f10/LY-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg" alt="Netflix">
+        <h3>نتفليكس (45 يوم)</h3>
+        <div class="price">75 دينار</div>
+        <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
+    </div>
 
-<!-- Sidebar -->
-<div class="sidebar">
-<h3>الفئات</h3>
-<div>🎬 Streaming</div>
-<div>🎮 Gaming</div>
-<div>💻 Software</div>
-<div>📱 Social</div>
+    <!-- شاهد -->
+    <div class="card">
+        <img src="https://shahid.mbc.net/static/images/shahid-logo-new.png" alt="Shahid" style="background:#00d46a; padding:10px; height:140px; object-fit:contain;">
+        <h3>شاهد VIP (شهري)</h3>
+        <div class="price">30 دينار</div>
+        <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
+    </div>
+
+    <!-- سناب بلس 3 شهور -->
+    <div class="card">
+        <img src="https://bt-wpmsa.s3.amazonaws.com/2022/06/Snapchat-Plus.jpg" alt="Snapchat">
+        <h3>سناب بلس (3 شهور)</h3>
+        <div class="price">55 دينار</div>
+        <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
+    </div>
+
+    <!-- سناب بلس 6 شهور -->
+    <div class="card">
+        <img src="https://bt-wpmsa.s3.amazonaws.com/2022/06/Snapchat-Plus.jpg" alt="Snapchat">
+        <h3>سناب بلس (6 شهور)</h3>
+        <div class="price">95 دينار</div>
+        <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
+    </div>
+
+    <!-- OSN -->
+    <div class="card">
+        <img src="https://www.osn.com/getattachment/90e0b3b2-3b3b-4b3b-8b3b-3b3b3b3b3b3b/OSN-Plus-Logo.png.aspx" alt="OSN" style="background:#702283; padding:10px; height:140px; object-fit:contain;">
+        <h3>OSN+ (شهري)</h3>
+        <div class="price">40 دينار</div>
+        <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
+    </div>
+
+    <!-- واتش ات -->
+    <div class="card">
+        <img src="https://www.watchit.com/static/images/logo-white.png" alt="WatchIt" style="background:#000; padding:10px; height:140px; object-fit:contain;">
+        <h3>واتش ات (Watch It)</h3>
+        <div class="price">70 دينار</div>
+        <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
+    </div>
 </div>
 
-<!-- Products -->
-<div class="products">
-
-<div class="card netflix">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
-<h4>Netflix 45 يوم</h4>
-<div class="price">85 دينار</div>
-<button onclick="order('Netflix')">اشترك الآن</button>
+<!-- قسم الدفع والمصارف -->
+<div class="payment-methods">
+    <div class="payment-title">طرق الدفع المتوفرة</div>
+    <div class="payment-icons">
+        <!-- رصيد ليبيانا -->
+        <div style="text-align:center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Libyana_Logo.svg" alt="Libyana">
+            <span class="libyana-tag">رصيد ليبيانا</span>
+        </div>
+        <!-- تمثيل للمصارف الليبية -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Bank_icon.svg/512px-Bank_icon.svg.png" alt="تحويل مصرفي" title="جميع المصارف الليبية">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Visa_logo.svg/512px-Visa_logo.svg.png" alt="Visa/MasterCard">
+    </div>
+    <p style="font-size: 13px; color: #777; margin-top: 10px;">نقبل التحويل المصرفي (التجارة والتنمية، الوحدة، الجمهورية) ورصيد ليبيانا.</p>
 </div>
 
-<div class="card shahid">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Shahid_logo.svg">
-<h4>Shahid VIP</h4>
-<div class="price">40 دينار</div>
-<button onclick="order('Shahid')">اشترك الآن</button>
+<div class="features">
+    <div><i class="fas fa-bolt"></i><p>تسليم فوري</p></div>
+    <div><i class="fas fa-handshake"></i><p>مصدر موثوق</p></div>
+    <div><i class="fas fa-shield-alt"></i><p>منتجات مضمونة</p></div>
+    <div><i class="fas fa-headset"></i><p>دعم ومتابعة</p></div>
 </div>
 
-<div class="card starz">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Starzplay_logo.png">
-<h4>StarzPlay</h4>
-<div class="price">35 دينار</div>
-<button onclick="order('Starz')">اشترك الآن</button>
-</div>
+<!-- زر واتساب برقمك 0917311459 -->
+<a href="https://wa.me/218917311459" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-<div class="card watch">
-<img src="https://i.imgur.com/K5Z6x2fl.jpg">
-<h4>Watch It</h4>
-<div class="price">35 دينار</div>
-<button onclick="order('Watch It')">اشترك الآن</button>
-</div>
-
-<div class="card osn">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/65/OSN_logo.png">
-<h4>OSN+</h4>
-<div class="price">35 دينار</div>
-<button onclick="order('OSN')">اشترك الآن</button>
-</div>
-
-<div class="card disney">
-<img src="https
+</body>
+</html>
