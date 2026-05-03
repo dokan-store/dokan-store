@@ -6,82 +6,197 @@
 <title>دُكان ستور</title>
 
 <style>
-body {
+body{
     margin:0;
-    font-family: Arial;
-    background:#0d0d0d;
+    font-family:Arial;
+    background:#0b0b0b;
     color:white;
     direction:rtl;
 }
 
-header {
+/* HEADER */
+header{
     text-align:center;
     padding:20px;
-    font-size:24px;
-    color:#00ff88;
 }
 
-.container {
+.logo{
+    font-size:30px;
+    color:#00ff88;
+    font-weight:bold;
+}
+
+.sub{
+    color:#aaa;
+}
+
+/* CARDS */
+.container{
     display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
     padding:20px;
 }
 
-.card {
+.card{
+    background:#151515;
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+.price{
+    color:#00ff88;
+    font-size:20px;
+}
+
+button{
+    background:#00ff88;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:10px;
+    width:100%;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000000cc;
+    justify-content:center;
+    align-items:center;
+}
+
+.box{
     background:#1a1a1a;
     padding:20px;
     border-radius:15px;
-    text-align:center;
+    width:90%;
+    max-width:320px;
 }
 
-.price {
-    color:#00ff88;
-    margin:10px 0;
-}
-
-button {
-    background:#00ff88;
-    border:none;
+input,select{
+    width:100%;
     padding:10px;
+    margin:10px 0;
     border-radius:10px;
-    cursor:pointer;
+    border:none;
+}
+
+/* PAYMENT INFO */
+.pay{
+    background:#111;
+    padding:15px;
+    margin:20px;
+    border-radius:15px;
+}
+
+footer{
+    text-align:center;
+    color:#666;
+    padding:15px;
 }
 </style>
 </head>
 
 <body>
 
-<header>دُكان ستور</header>
+<header>
+<div class="logo">🛒 دُكان ستور</div>
+<div class="sub">اشتراكات + خدمات رقمية</div>
+</header>
 
 <div class="container">
 
 <div class="card">
 <h3>Netflix</h3>
 <p class="price">40 دينار</p>
-<button onclick="buy('Netflix')">اشترك</button>
+<button onclick="openForm('Netflix')">اشترك</button>
 </div>
 
 <div class="card">
 <h3>Snapchat+</h3>
 <p class="price">20 دينار</p>
-<button onclick="buy('Snapchat+')">اشترك</button>
+<button onclick="openForm('Snapchat+')">اشترك</button>
 </div>
 
 <div class="card">
 <h3>Shahid VIP</h3>
 <p class="price">25 دينار</p>
-<button onclick="buy('Shahid VIP')">اشترك</button>
+<button onclick="openForm('Shahid VIP')">اشترك</button>
+</div>
+
+<div class="card">
+<h3>Watch It</h3>
+<p class="price">15 دينار</p>
+<button onclick="openForm('Watch It')">اشترك</button>
 </div>
 
 </div>
+
+<!-- طرق الدفع -->
+<div class="pay">
+<h3>💳 طرق الدفع</h3>
+<p>📱 تحويل رصيد: 0917311459</p>
+<p>🏦 مصرف الجمهورية</p>
+<p>📩 بعد التحويل صوّر العملية وابعتها واتساب</p>
+</div>
+
+<!-- FORM -->
+<div class="modal" id="formBox">
+<div class="box">
+
+<h3 id="productName"></h3>
+
+<input type="text" id="name" placeholder="اسمك">
+<input type="text" id="phoneUser" placeholder="رقمك">
+
+<select id="payment">
+<option>تحويل رصيد</option>
+<option>تحويل بنكي</option>
+</select>
+
+<button onclick="sendOrder()">تأكيد الطلب</button>
+
+</div>
+</div>
+
+<footer>© دُكان ستور</footer>
 
 <script>
-function buy(product){
-let phone = "218XXXXXXXXX"; // حط رقمك هنا
-let msg = "نبي نشترك في " + product;
-let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
-window.open(url,'_blank');
+let product="";
+
+function openForm(p){
+product=p;
+document.getElementById("productName").innerText=p;
+document.getElementById("formBox").style.display="flex";
+}
+
+function sendOrder(){
+let name=document.getElementById("name").value;
+let phoneUser=document.getElementById("phoneUser").value;
+let payment=document.getElementById("payment").value;
+
+let phone="218917311459";
+
+let msg="طلب جديد:%0A"+
+"الخدمة: "+product+"%0A"+
+"الاسم: "+name+"%0A"+
+"رقم الزبون: "+phoneUser+"%0A"+
+"طريقة الدفع: "+payment;
+
+window.open("https://wa.me/"+phone+"?text="+msg);
 }
 </script>
 
