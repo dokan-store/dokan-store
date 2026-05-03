@@ -5,109 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دُكان ستور ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --gold: #D4AF37; --black: #000; --card-bg: #111; }
-        body { font-family: 'Cairo', sans-serif; background: var(--black); color: #fff; margin: 0; }
-        header { padding: 30px; text-align: center; border-bottom: 2px solid var(--gold); background: #050505; }
-        .logo { font-size: 35px; font-weight: bold; color: var(--gold); text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
-        .subtitle { font-size: 16px; color: #ccc; margin-top: 10px; }
+        :root { --gold: #D4AF37; --black: #000; }
+        body { font-family: 'Cairo', sans-serif; background: var(--black); color: #fff; margin: 0; text-align: center; }
+        header { padding: 20px; border-bottom: 2px solid var(--gold); }
+        .logo { font-size: 30px; font-weight: bold; color: var(--gold); }
         
-        .container { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); border-radius: 20px; border: 1px solid #222; overflow: hidden; transition: 0.4s; text-align: center; padding-bottom: 15px; }
-        .card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 10px 20px rgba(212,175,55,0.2); }
+        .container { padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .card { background: #111; border: 1px solid #222; border-radius: 15px; width: 280px; overflow: hidden; padding-bottom: 15px; }
         
-        /* صور المنصات - تحديث الصور */
-        .card-img { width: 100%; height: 250px; background-size: cover; background-position: center; border-bottom: 1px solid var(--gold); }
+        /* صور مباشرة تطلع طول */
+        .card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--gold); }
         
-        .price { font-size: 28px; font-weight: bold; color: var(--gold); margin: 15px 0; }
-        .buy-btn { background: linear-gradient(45deg, var(--gold), #b8860b); color: #000; padding: 14px; margin: 0 15px; border-radius: 10px; text-decoration: none; display: block; font-weight: bold; font-size: 18px; cursor: pointer; border: none; width: 85%; }
-
-        /* رسالة الرد التلقائي */
-        #status-msg { display: none; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #000; padding: 15px 30px; border-radius: 50px; font-weight: bold; z-index: 2000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-
-        .payment-info { background: #080808; padding: 40px 20px; text-align: center; border-top: 2px solid var(--gold); margin-top: 30px; }
-        .pay-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
-        .pay-item { background: #1a1a1a; padding: 10px 20px; border-radius: 8px; border: 1px solid #333; color: var(--gold); font-weight: bold; }
-        .libyana { border-color: #004f9f; color: #004f9f; }
+        .price { font-size: 24px; color: var(--gold); margin: 10px 0; font-weight: bold; }
+        .buy-btn { background: var(--gold); color: #000; padding: 12px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 18px; }
         
-        .wa-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; }
+        .payment { margin-top: 30px; padding: 20px; background: #080808; border-top: 1px solid #222; }
+        .libyana { color: #004f9f; font-weight: bold; border: 1px solid #004f9f; padding: 5px 15px; border-radius: 5px; display: inline-block; margin: 10px; }
+        .bank { color: var(--gold); border: 1px solid var(--gold); padding: 5px 15px; border-radius: 5px; display: inline-block; margin: 10px; }
     </style>
 </head>
 <body>
 
-<div id="status-msg">سنرد عليكم في لحظات.. انتظرنا ✨</div>
-
 <header>
-    <div class="logo">✨ دُكان ستور ✨</div>
-    <div class="subtitle">كل اللي تحتاجه من اشتراكات وكروت ف مكان واحد 👑</div>
+    <div class="logo">دُكان ستور ✨</div>
 </header>
 
 <div class="container">
     <!-- نيتفليكس -->
     <div class="card">
-        <div class="card-img" style="background-image: url('https://images.ctfassets.net/4cd45et68cgf/22reSpS9CU6S28O8Ucmis8/341697274092b67876a445d4c93540c1/Netflix_Stranger_Things.jpg');"></div>
+        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bca1-075839515773/86629851-4171-4475-8025-a773d726b170/LY-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg" alt="Netflix">
         <h3>نيتفليكس 4K (45 يوم)</h3>
         <div class="price">75 د.ل</div>
-        <button onclick="order('نيتفليكس 4K')" class="buy-btn">اشتري الآن</button>
+        <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0A---%0Aمتاكد%20من%20طلب%20؟%0A---%0Aشن%20طريقة%20دفع%20؟" class="buy-btn">اشتري الآن</a>
     </div>
 
     <!-- سناب بلس -->
     <div class="card">
-        <div class="card-img" style="background-image: url('https://image.winudf.com/v2/image1/Y29tLnNuYXBjaGF0LmFuZHJvaWRfaWNvbl8xNjYxMzEwOTI1XzA5MA/icon.png?w=184&fakeurl=1');"></div>
+        <img src="https://images.t3n.de/products/snapchat-plus-62f4e0c8b0b9a.png" alt="Snapchat">
         <h3>سناب بلس (6 شهور)</h3>
         <div class="price">95 د.ل</div>
-        <button onclick="order('سناب بلس 6 شهور')" class="buy-btn">اشتري الآن</button>
+        <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0A---%0Aمتاكد%20من%20طلب%20؟%0A---%0Aشن%20طريقة%20دفع%20؟" class="buy-btn">اشتري الآن</a>
     </div>
 
     <!-- OSN -->
     <div class="card">
-        <div class="card-img" style="background-image: url('https://www.osn.com/getattachment/9f170e5d-16a7-47b5-8664-96c669149027/osn-plus-logo.png'); background-color: #000;"></div>
+        <img src="https://stream.osn.com/images/osnplus-logo-red.png" alt="OSN" style="background: #000; padding: 20px; box-sizing: border-box;">
         <h3>OSN+ (شهري)</h3>
         <div class="price">40 د.ل</div>
-        <button onclick="order('OSN+ شهري')" class="buy-btn">اشتري الآن</button>
-    </div>
-
-    <!-- شاهد -->
-    <div class="card">
-        <div class="card-img" style="background-image: url('https://shahid.mbc.net/static/images/shahid-logo-new.png'); background-color: #00d46a;"></div>
-        <h3>شاهد VIP (شهري)</h3>
-        <div class="price">30 د.ل</div>
-        <button onclick="order('شاهد VIP')" class="buy-btn">اشتري الآن</button>
+        <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0A---%0Aمتاكد%20من%20طلب%20؟%0A---%0Aشن%20طريقة%20دفع%20؟" class="buy-btn">اشتري الآن</a>
     </div>
 </div>
 
-<div class="payment-info">
-    <h2 style="color: var(--gold);">💳 طرق الدفع المتاحة</h2>
-    <div class="pay-grid">
-        <div class="pay-item libyana">📱 رصيد ليبيانا</div>
-        <div class="pay-item">🏦 مصرف الجمهورية</div>
-        <div class="pay-item">🏦 مصرف التجارة والتنمية</div>
-        <div class="pay-item">🏦 مصرف الوحدة</div>
-    </div>
-    <p style="margin-top: 30px; font-weight: bold; color: #444;">دُكان ستور ✨ | جودة تليق بيك</p>
+<div class="payment">
+    <div class="libyana">📱 ليبيانا</div>
+    <div class="bank">🏦 مصرف الجمهورية</div>
+    <div class="bank">🏦 التجارة والتنمية</div>
+    <div class="bank">🏦 مصرف الوحدة</div>
 </div>
-
-<a href="https://wa.me/218917311459" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-<script>
-function order(product) {
-    // إظهار رسالة الرد التلقائي في الموقع
-    var msg = document.getElementById('status-msg');
-    msg.style.display = 'block';
-    
-    // تجهيز رابط الواتساب بالرسالة المطلوبة
-    var phone = "218917311459";
-    var text = "✨ دُكان ستور ✨\n---\nنبي نطلب: " + product + " 🎬\n---\nمتاكد من طلب ؟\nنعم متأكد 🔥\n---\nشن طريقة دفع ؟\nتفضل أعطيني بياناتك 👑";
-    var encodedText = encodeURIComponent(text);
-    var whatsappUrl = "https://wa.me/" + phone + "?text=" + encodedText;
-
-    // التحويل بعد ثانية واحدة لإعطاء فرصة لقراءة الرسالة في الموقع
-    setTimeout(function() {
-        window.location.href = whatsappUrl;
-    }, 1200);
-}
-</script>
 
 </body>
 </html>
