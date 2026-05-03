@@ -9,89 +9,94 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:Arial;
-  background:#0b1220;
-  color:#e5e7eb;
+  background:linear-gradient(135deg,#f0f9ff,#e0f2fe);
+  color:#0f172a;
 }
 
 /* Header */
 header{
-  background:#0f172a;
+  background:white;
   padding:15px;
-  text-align:center;
-  border-bottom:1px solid #1f2937;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 header h1{color:#22c55e}
-
-/* Offer */
-.offer{
-  background:#dc2626;
-  text-align:center;
-  padding:10px;
-  animation:pulse 1.5s infinite;
-}
 
 /* Hero */
 .hero{
   text-align:center;
-  padding:40px;
+  padding:50px 20px;
+}
+.hero h2{
+  font-size:32px;
+}
+.hero p{
+  color:#64748b;
+}
+
+/* Timer */
+.timer{
+  background:#22c55e;
+  color:white;
+  padding:10px;
+  text-align:center;
+  font-weight:bold;
 }
 
 /* Products */
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
   padding:20px;
 }
 
 .product{
-  background:#0f172a;
-  padding:20px;
+  background:white;
   border-radius:15px;
-  border:1px solid #1f2937;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  transition:.3s;
+}
+.product:hover{
+  transform:translateY(-6px);
 }
 
-.product img{width:80px}
+.product img{
+  width:80px;
+  display:block;
+  margin:auto;
+}
 
-select,input{
+select,button{
   width:100%;
-  padding:8px;
-  margin:10px 0;
-  border-radius:8px;
+  padding:10px;
+  margin-top:10px;
+  border-radius:10px;
   border:none;
-  background:#1e293b;
-  color:white;
+}
+
+select{
+  background:#f1f5f9;
 }
 
 button{
-  width:100%;
-  padding:10px;
   background:#22c55e;
-  border:none;
-  border-radius:10px;
   color:white;
   cursor:pointer;
 }
 
-/* Reviews */
-.reviews{
-  padding:30px;
-}
-.review{
-  background:#0f172a;
-  margin:10px;
-  padding:15px;
-  border-radius:10px;
-}
-
-/* Notification */
+/* Notify */
 #notify{
   position:fixed;
   bottom:20px;
   left:20px;
-  background:#22c55e;
-  padding:10px;
+  background:white;
+  padding:10px 15px;
   border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
   display:none;
 }
 
@@ -99,14 +104,7 @@ button{
 footer{
   text-align:center;
   padding:15px;
-  background:#020617;
-}
-
-/* Animations */
-@keyframes pulse{
-  0%{opacity:1}
-  50%{opacity:.5}
-  100%{opacity:1}
+  color:#64748b;
 }
 </style>
 </head>
@@ -114,16 +112,17 @@ footer{
 <body>
 
 <header>
-  <h1>Dokan Store 🔥</h1>
+  <h1>Dokan Store 🚀</h1>
+  <div>📱 0917311459</div>
 </header>
 
-<div class="offer">
-🔥 عرض محدود! ينتهي خلال: <span id="timer">10:00</span>
+<div class="timer">
+⏳ العرض ينتهي خلال: <span id="time">05:00</span>
 </div>
 
 <section class="hero">
-  <h2>أقوى متجر اشتراكات رقمية 🇱🇾</h2>
-  <p>أكثر من 1200 زبون ✔️ تسليم فوري ⚡</p>
+  <h2>أفضل متجر اشتراكات رقمية في ليبيا 🇱🇾</h2>
+  <p>سرعة ⚡ جودة 💎 ضمان ✔️</p>
 </section>
 
 <section class="products">
@@ -131,63 +130,67 @@ footer{
 <!-- Snap -->
 <div class="product">
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/512px-Snapchat_logo.svg.png">
-<h3>Snapchat Plus 👻</h3>
+<h3>Snapchat Plus</h3>
 <select id="snap">
-<option value="3 شهور - 65">3 شهور - 65</option>
-<option value="6 شهور - 110">6 شهور - 110</option>
-<option value="12 شهر - 220">12 شهر - 220</option>
+<option>3 شهور - 65</option>
+<option>6 شهور - 110</option>
 </select>
-<input id="name1" placeholder="اسمك">
-<button onclick="order('Snapchat Plus','snap','name1')">اطلب</button>
+<button onclick="order('Snapchat')">اطلب</button>
 </div>
 
 <!-- Netflix -->
 <div class="product">
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
-<h3>Netflix 🎬</h3>
+<h3>Netflix</h3>
 <select id="netflix">
-<option value="45 يوم - 75">45 يوم - 75</option>
+<option>45 يوم - 75</option>
 </select>
-<input id="name2" placeholder="اسمك">
-<button onclick="order('Netflix','netflix','name2')">اطلب</button>
+<button onclick="order('Netflix')">اطلب</button>
 </div>
 
-</section>
+<!-- Shahid -->
+<div class="product">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Shahid_logo.svg">
+<h3>Shahid VIP</h3>
+<select id="shahid">
+<option>شهر - 35</option>
+</select>
+<button onclick="order('Shahid')">اطلب</button>
+</div>
 
-<section class="reviews">
-<h2>⭐ آراء الزبائن</h2>
-<div class="review">محمد: وصلني بسرعة 🔥</div>
-<div class="review">سالم: خدمة ممتازة 💯</div>
-<div class="review">علي: ثقة 👍</div>
 </section>
 
 <div id="notify"></div>
 
 <footer>
-© 2026 جميع الحقوق محفوظة - Dokan Store
+© 2026 جميع الحقوق محفوظة
 </footer>
 
+<!-- صوت -->
+<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+
 <script>
-function order(name,id,input){
-let value=document.getElementById(id).value;
-let user=document.getElementById(input).value;
-let msg="طلب جديد:%0A"+name+" - "+value+"%0Aالاسم: "+user;
-window.open("https://wa.me/218917311459?text="+msg);
+function order(product){
+  document.getElementById("clickSound").play();
+  alert("تم الطلب ✅");
+
+  let msg="السلام عليكم نبي "+product;
+  window.open("https://wa.me/218917311459?text="+msg);
 }
 
 /* Timer */
-let time=600;
+let t=300;
 setInterval(()=>{
-let m=Math.floor(time/60);
-let s=time%60;
-document.getElementById("timer").innerHTML=m+":"+s;
-time--;
-if(time<0)time=600;
+let m=Math.floor(t/60);
+let s=t%60;
+document.getElementById("time").innerHTML=m+":"+(s<10?"0"+s:s);
+t--;
+if(t<0)t=300;
 },1000);
 
 /* Notifications */
-let names=["محمد","سالم","علي","يوسف"];
-let prods=["Snap","Netflix"];
+let names=["محمود","علي","سالم","يوسف"];
+let prods=["Snap","Netflix","Shahid"];
 
 setInterval(()=>{
 let n=names[Math.floor(Math.random()*names.length)];
@@ -198,7 +201,7 @@ box.innerHTML="🔥 "+n+" اشترى "+p;
 box.style.display="block";
 
 setTimeout(()=>box.style.display="none",3000);
-},5000);
+},6000);
 </script>
 
 </body>
