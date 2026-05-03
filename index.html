@@ -22,25 +22,21 @@ header{
 }
 header h1{color:#22c55e}
 
-/* Hero */
-.hero{
-  padding:40px;
-  text-align:center;
-  animation:fade 1s;
-}
-.hero h2{font-size:30px}
-.hero p{color:#9ca3af}
-
 /* Offer */
 .offer{
   background:#dc2626;
-  padding:10px;
   text-align:center;
-  font-weight:bold;
+  padding:10px;
   animation:pulse 1.5s infinite;
 }
 
-/* Grid */
+/* Hero */
+.hero{
+  text-align:center;
+  padding:40px;
+}
+
+/* Products */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -50,28 +46,20 @@ header h1{color:#22c55e}
 
 .product{
   background:#0f172a;
-  border:1px solid #1f2937;
   padding:20px;
   border-radius:15px;
-  text-align:center;
-  transition:.3s;
-}
-.product:hover{
-  transform:translateY(-8px);
-  box-shadow:0 15px 30px rgba(0,0,0,0.6);
+  border:1px solid #1f2937;
 }
 
-.product img{
-  width:90px;
-}
+.product img{width:80px}
 
-select{
+select,input{
   width:100%;
   padding:8px;
   margin:10px 0;
-  background:#1e293b;
-  border:none;
   border-radius:8px;
+  border:none;
+  background:#1e293b;
   color:white;
 }
 
@@ -84,10 +72,6 @@ button{
   color:white;
   cursor:pointer;
 }
-button:hover{
-  background:#16a34a;
-  transform:scale(1.05);
-}
 
 /* Reviews */
 .reviews{
@@ -98,7 +82,6 @@ button:hover{
   margin:10px;
   padding:15px;
   border-radius:10px;
-  animation:fade 2s;
 }
 
 /* Notification */
@@ -107,7 +90,7 @@ button:hover{
   bottom:20px;
   left:20px;
   background:#22c55e;
-  padding:10px 15px;
+  padding:10px;
   border-radius:10px;
   display:none;
 }
@@ -117,14 +100,9 @@ footer{
   text-align:center;
   padding:15px;
   background:#020617;
-  color:#64748b;
 }
 
 /* Animations */
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
 @keyframes pulse{
   0%{opacity:1}
   50%{opacity:.5}
@@ -140,16 +118,17 @@ footer{
 </header>
 
 <div class="offer">
-🔥 عرض محدود! باقي 7 زباين فقط بالسعر الحالي
+🔥 عرض محدود! ينتهي خلال: <span id="timer">10:00</span>
 </div>
 
 <section class="hero">
   <h2>أقوى متجر اشتراكات رقمية 🇱🇾</h2>
-  <p>🔥 أكثر من 1200 زبون راضي | تسليم فوري ⚡</p>
+  <p>أكثر من 1200 زبون ✔️ تسليم فوري ⚡</p>
 </section>
 
 <section class="products">
 
+<!-- Snap -->
 <div class="product">
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/512px-Snapchat_logo.svg.png">
 <h3>Snapchat Plus 👻</h3>
@@ -158,37 +137,28 @@ footer{
 <option value="6 شهور - 110">6 شهور - 110</option>
 <option value="12 شهر - 220">12 شهر - 220</option>
 </select>
-<button onclick="order('Snapchat Plus','snap')">اطلب الآن</button>
+<input id="name1" placeholder="اسمك">
+<button onclick="order('Snapchat Plus','snap','name1')">اطلب</button>
 </div>
 
+<!-- Netflix -->
 <div class="product">
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
 <h3>Netflix 🎬</h3>
 <select id="netflix">
 <option value="45 يوم - 75">45 يوم - 75</option>
 </select>
-<button onclick="order('Netflix','netflix')">اطلب الآن</button>
-</div>
-
-<div class="product">
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Shahid_logo.svg">
-<h3>Shahid VIP 📺</h3>
-<select id="shahid">
-<option value="شهر - 35">شهر - 35</option>
-<option value="3 شهور - 90">3 شهور - 90</option>
-</select>
-<button onclick="order('Shahid VIP','shahid')">اطلب الآن</button>
+<input id="name2" placeholder="اسمك">
+<button onclick="order('Netflix','netflix','name2')">اطلب</button>
 </div>
 
 </section>
 
 <section class="reviews">
 <h2>⭐ آراء الزبائن</h2>
-
-<div class="review">محمد علي: خدمة سريعة جدًا 🔥</div>
-<div class="review">سالم: أفضل متجر في ليبيا 💯</div>
-<div class="review">أحمد: ثقة وتعامل راقي 👌</div>
-
+<div class="review">محمد: وصلني بسرعة 🔥</div>
+<div class="review">سالم: خدمة ممتازة 💯</div>
+<div class="review">علي: ثقة 👍</div>
 </section>
 
 <div id="notify"></div>
@@ -198,28 +168,37 @@ footer{
 </footer>
 
 <script>
-function order(name,id){
+function order(name,id,input){
 let value=document.getElementById(id).value;
-let msg="السلام عليكم، نبي نطلب:\n"+name+" - "+value;
-window.open("https://wa.me/218917311459?text="+encodeURIComponent(msg));
+let user=document.getElementById(input).value;
+let msg="طلب جديد:%0A"+name+" - "+value+"%0Aالاسم: "+user;
+window.open("https://wa.me/218917311459?text="+msg);
 }
 
-/* إشعارات وهمية */
-let names=["محمد","سالم","أحمد","علي","يوسف"];
-let products=["Snapchat Plus","Netflix","Shahid"];
+/* Timer */
+let time=600;
+setInterval(()=>{
+let m=Math.floor(time/60);
+let s=time%60;
+document.getElementById("timer").innerHTML=m+":"+s;
+time--;
+if(time<0)time=600;
+},1000);
 
-function showNotify(){
+/* Notifications */
+let names=["محمد","سالم","علي","يوسف"];
+let prods=["Snap","Netflix"];
+
+setInterval(()=>{
 let n=names[Math.floor(Math.random()*names.length)];
-let p=products[Math.floor(Math.random()*products.length)];
+let p=prods[Math.floor(Math.random()*prods.length)];
 
 let box=document.getElementById("notify");
 box.innerHTML="🔥 "+n+" اشترى "+p;
 box.style.display="block";
 
-setTimeout(()=>{box.style.display="none";},3000);
-}
-
-setInterval(showNotify,6000);
+setTimeout(()=>box.style.display="none",3000);
+},5000);
 </script>
 
 </body>
