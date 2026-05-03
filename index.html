@@ -1,175 +1,225 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dokan Store</title>
 
 <style>
-body {
-  margin:0;
-  font-family: Arial;
-  background:#f8fafc;
-  color:#0f172a;
-  text-align:center;
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Arial;
+  background:#0b1220;
+  color:#e5e7eb;
 }
 
 /* Header */
-header {
-  background:white;
+header{
+  background:#0f172a;
   padding:15px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.1);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  text-align:center;
+  border-bottom:1px solid #1f2937;
 }
-
-header h1 {
-  color:#22c55e;
-}
+header h1{color:#22c55e}
 
 /* Hero */
-.hero {
+.hero{
   padding:40px;
+  text-align:center;
+  animation:fade 1s;
+}
+.hero h2{font-size:30px}
+.hero p{color:#9ca3af}
+
+/* Offer */
+.offer{
+  background:#dc2626;
+  padding:10px;
+  text-align:center;
+  font-weight:bold;
+  animation:pulse 1.5s infinite;
 }
 
-.hero h2 {
-  font-size:28px;
+/* Grid */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:20px;
 }
 
-.hero p {
-  color:#64748b;
-}
-
-/* Products */
-.products {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
-.product {
-  background:white;
-  margin:15px;
+.product{
+  background:#0f172a;
+  border:1px solid #1f2937;
   padding:20px;
   border-radius:15px;
-  width:260px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  text-align:center;
+  transition:.3s;
+}
+.product:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 30px rgba(0,0,0,0.6);
 }
 
-.product img {
-  width:80px;
-  height:80px;
+.product img{
+  width:90px;
 }
 
-/* Buttons */
-button {
+select{
+  width:100%;
+  padding:8px;
+  margin:10px 0;
+  background:#1e293b;
+  border:none;
+  border-radius:8px;
+  color:white;
+}
+
+button{
+  width:100%;
+  padding:10px;
   background:#22c55e;
   border:none;
-  padding:10px;
-  color:white;
   border-radius:10px;
+  color:white;
   cursor:pointer;
 }
+button:hover{
+  background:#16a34a;
+  transform:scale(1.05);
+}
 
-/* Payment */
-.payment {
-  background:white;
+/* Reviews */
+.reviews{
   padding:30px;
-  margin-top:30px;
+}
+.review{
+  background:#0f172a;
+  margin:10px;
+  padding:15px;
+  border-radius:10px;
+  animation:fade 2s;
+}
+
+/* Notification */
+#notify{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#22c55e;
+  padding:10px 15px;
+  border-radius:10px;
+  display:none;
 }
 
 /* Footer */
-footer {
-  padding:20px;
-  background:white;
-  margin-top:20px;
+footer{
+  text-align:center;
+  padding:15px;
+  background:#020617;
+  color:#64748b;
+}
+
+/* Animations */
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes pulse{
+  0%{opacity:1}
+  50%{opacity:.5}
+  100%{opacity:1}
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-  <h1>Dokan Store 🚀</h1>
-  <div>📱 0917311459</div>
+  <h1>Dokan Store 🔥</h1>
 </header>
 
+<div class="offer">
+🔥 عرض محدود! باقي 7 زباين فقط بالسعر الحالي
+</div>
+
 <section class="hero">
-  <h2>🔥 أقوى متجر اشتراكات رقمية في ليبيا</h2>
-  <p>جودة عالية ✔️ تسليم سريع ⚡ دعم 24/7 💎</p>
+  <h2>أقوى متجر اشتراكات رقمية 🇱🇾</h2>
+  <p>🔥 أكثر من 1200 زبون راضي | تسليم فوري ⚡</p>
 </section>
 
 <section class="products">
 
-<!-- Snap -->
 <div class="product">
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+<img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/512px-Snapchat_logo.svg.png">
 <h3>Snapchat Plus 👻</h3>
-<p>3 شهور - 65 دينار</p>
-<p>6 شهور - 110 دينار</p>
-<p>12 شهر - 220 دينار</p>
-<button onclick="order('Snapchat Plus')">اطلب الآن</button>
+<select id="snap">
+<option value="3 شهور - 65">3 شهور - 65</option>
+<option value="6 شهور - 110">6 شهور - 110</option>
+<option value="12 شهر - 220">12 شهر - 220</option>
+</select>
+<button onclick="order('Snapchat Plus','snap')">اطلب الآن</button>
 </div>
 
-<!-- Netflix -->
 <div class="product">
-<img src="https://cdn-icons-png.flaticon.com/512/732/732228.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
 <h3>Netflix 🎬</h3>
-<p>شهر - 35 دينار</p>
-<button onclick="order('Netflix')">اطلب الآن</button>
+<select id="netflix">
+<option value="45 يوم - 75">45 يوم - 75</option>
+</select>
+<button onclick="order('Netflix','netflix')">اطلب الآن</button>
 </div>
 
-<!-- Spotify -->
 <div class="product">
-<img src="https://cdn-icons-png.flaticon.com/512/174/174872.png">
-<h3>Spotify 🎧</h3>
-<p>شهر - 30 دينار</p>
-<button onclick="order('Spotify')">اطلب الآن</button>
-</div>
-
-<!-- Shahid -->
-<div class="product">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968852.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Shahid_logo.svg">
 <h3>Shahid VIP 📺</h3>
-<p>شهر - 30 دينار</p>
-<button onclick="order('Shahid VIP')">اطلب الآن</button>
-</div>
-
-<!-- YouTube -->
-<div class="product">
-<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
-<h3>YouTube Premium ▶️</h3>
-<p>شهر - 35 دينار</p>
-<button onclick="order('YouTube Premium')">اطلب الآن</button>
-</div>
-
-<!-- ChatGPT -->
-<div class="product">
-<img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png">
-<h3>ChatGPT Plus 🤖</h3>
-<p>شهر - 80 دينار</p>
-<button onclick="order('ChatGPT Plus')">اطلب الآن</button>
+<select id="shahid">
+<option value="شهر - 35">شهر - 35</option>
+<option value="3 شهور - 90">3 شهور - 90</option>
+</select>
+<button onclick="order('Shahid VIP','shahid')">اطلب الآن</button>
 </div>
 
 </section>
 
-<section class="payment">
-  <h2>💳 طرق الدفع</h2>
-  <p>📱 ليبيانا: 0917311459</p>
-  <p>🏦 تحويل مصرفي (تواصل واتساب)</p>
+<section class="reviews">
+<h2>⭐ آراء الزبائن</h2>
+
+<div class="review">محمد علي: خدمة سريعة جدًا 🔥</div>
+<div class="review">سالم: أفضل متجر في ليبيا 💯</div>
+<div class="review">أحمد: ثقة وتعامل راقي 👌</div>
+
 </section>
+
+<div id="notify"></div>
 
 <footer>
-  <p>© 2026 جميع الحقوق محفوظة - Dokan Store</p>
+© 2026 جميع الحقوق محفوظة - Dokan Store
 </footer>
 
 <script>
-function order(product){
-  let msg = "السلام عليكم، نبي نطلب " + product;
-  window.open("https://wa.me/218917311459?text=" + encodeURIComponent(msg));
+function order(name,id){
+let value=document.getElementById(id).value;
+let msg="السلام عليكم، نبي نطلب:\n"+name+" - "+value;
+window.open("https://wa.me/218917311459?text="+encodeURIComponent(msg));
 }
+
+/* إشعارات وهمية */
+let names=["محمد","سالم","أحمد","علي","يوسف"];
+let products=["Snapchat Plus","Netflix","Shahid"];
+
+function showNotify(){
+let n=names[Math.floor(Math.random()*names.length)];
+let p=products[Math.floor(Math.random()*products.length)];
+
+let box=document.getElementById("notify");
+box.innerHTML="🔥 "+n+" اشترى "+p;
+box.style.display="block";
+
+setTimeout(()=>{box.style.display="none";},3000);
+}
+
+setInterval(showNotify,6000);
 </script>
 
 </body>
