@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دُكان ستور</title>
 
+<style>
+body {
+    margin:0;
+    font-family: Arial;
+    background:#0d0d0d;
+    color:white;
+    direction:rtl;
+}
+
+header {
+    text-align:center;
+    padding:20px;
+    font-size:24px;
+    color:#00ff88;
+}
+
+.container {
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    padding:20px;
+}
+
+.card {
+    background:#1a1a1a;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.price {
+    color:#00ff88;
+    margin:10px 0;
+}
+
+button {
+    background:#00ff88;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>دُكان ستور</header>
+
+<div class="container">
+
+<div class="card">
+<h3>Netflix</h3>
+<p class="price">40 دينار</p>
+<button onclick="buy('Netflix')">اشترك</button>
+</div>
+
+<div class="card">
+<h3>Snapchat+</h3>
+<p class="price">20 دينار</p>
+<button onclick="buy('Snapchat+')">اشترك</button>
+</div>
+
+<div class="card">
+<h3>Shahid VIP</h3>
+<p class="price">25 دينار</p>
+<button onclick="buy('Shahid VIP')">اشترك</button>
+</div>
+
+</div>
+
+<script>
+function buy(product){
+let phone = "218XXXXXXXXX"; // حط رقمك هنا
+let msg = "نبي نشترك في " + product;
+let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+window.open(url,'_blank');
+}
+</script>
+
+</body>
+</html>
