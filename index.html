@@ -3,221 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دكان ستور | متجرك الرقمي المتكامل</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>دكان ستور | عالمك الرقمي بلا حدود</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #3b82f6;
-            --secondary: #10b981;
-            --dark: #0f172a;
-            --card-bg: #1e293b;
-            --text-light: #f8fafc;
+            --accent: #f59e0b;
+            --bg: #030712;
+            --card-bg: #111827;
+            --text: #f9fafb;
         }
 
+        * { box-sizing: border-box; }
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: var(--dark);
-            color: var(--text-light);
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0; padding: 0;
+            overflow-x: hidden;
         }
 
+        /* تصميم الهيدر (البانر العلوي) */
         header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            padding: 40px 20px;
+            background: linear-gradient(rgba(3, 7, 18, 0.8), rgba(3, 7, 18, 0.8)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
             text-align: center;
-            border-bottom: 2px solid var(--primary);
+            border-bottom: 3px solid var(--primary);
         }
 
-        .logo { font-size: 32px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
-        .tagline { opacity: 0.8; font-size: 16px; }
+        .logo { font-size: 50px; font-weight: 900; letter-spacing: -1px; color: var(--primary); text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        .hero-text { font-size: 20px; margin-top: 15px; color: #9ca3af; }
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
+        /* شبكة الخدمات */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
-        .service-card {
+        .card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px;
+            border-radius: 24px;
+            padding: 30px;
             text-align: center;
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .service-card:hover {
+        .card:hover {
             transform: translateY(-10px);
             border-color: var(--primary);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
         }
 
-        .service-icon {
-            width: 70px; height: 70px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 30px; color: var(--primary);
+        .service-img { width: 100px; height: 100px; margin-bottom: 20px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1)); }
+
+        .service-name { font-size: 26px; font-weight: 700; margin-bottom: 10px; }
+        .promo-text { color: var(--accent); font-size: 14px; font-weight: bold; margin-bottom: 15px; display: block; }
+        .description { font-size: 15px; color: #9ca3af; margin-bottom: 20px; min-height: 45px; }
+
+        select, input {
+            width: 100%; padding: 14px; border-radius: 12px;
+            background: #1f2937; border: 1px solid #374151;
+            color: white; font-family: 'Cairo'; margin-bottom: 15px; outline: none;
         }
 
-        .service-title { font-size: 22px; margin-bottom: 15px; }
-
-        .duration-select {
-            width: 100%;
-            padding: 12px;
-            border-radius: 10px;
-            background: #334155;
-            color: white;
-            border: none;
-            font-family: 'Cairo';
-            margin-bottom: 20px;
-            outline: none;
-        }
-
-        .price-tag {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 25px;
-        }
+        .price-wrapper { font-size: 32px; font-weight: 900; color: #10b981; margin: 20px 0; }
+        .price-wrapper span { font-size: 16px; color: #9ca3af; font-weight: 400; }
 
         .btn-order {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: 0.3s;
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white; border: none; width: 100%; padding: 18px;
+            border-radius: 15px; font-weight: bold; font-size: 18px;
+            cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
 
-        .btn-order:hover { background: #2563eb; }
+        .btn-order:hover { filter: brightness(1.1); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
 
-        .payment-footer {
-            margin-top: 60px;
-            text-align: center;
-            padding: 40px;
-            background: #1e293b;
-        }
+        /* تذييل الصفحة */
+        footer { background: #000; padding: 60px 20px; text-align: center; margin-top: 100px; border-top: 1px solid #1f2937; }
+        .payment-methods { display: flex; justify-content: center; gap: 20px; margin: 30px 0; flex-wrap: wrap; }
+        .method { background: #111827; padding: 10px 20px; border-radius: 10px; border: 1px solid #374151; font-weight: bold; }
 
-        .methods {
-            display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap;
-        }
-
-        .method-badge {
-            background: #334155; padding: 8px 20px; border-radius: 8px; font-size: 14px;
-        }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">دكان ستور | Dokan Store</div>
-    <div class="tagline">متجرك الموثوق للاشتراكات الرقمية وخدمات الشحن في ليبيا</div>
+    <div class="logo">DOKAN STORE</div>
+    <div class="hero-text">رفيقك الأول في عالم الترفيه الرقمي.. سرعة، أمان، وضمان حقيقي.</div>
 </header>
 
 <div class="container">
-    <div class="services-grid">
+    <div class="grid">
         
-        <div class="service-card">
-            <div class="service-icon"><i class="fab fa-snapchat"></i></div>
-            <div class="service-title">سناب شات بلص</div>
-            <select class="duration-select" onchange="updatePrice(this)">
-                <option value="3" data-price="55">3 شهور</option>
-                <option value="6" data-price="95">6 شهور</option>
-                <option value="12" data-price="170">12 شهر</option>
+        <div class="card" id="shahid">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Shahid_logo.svg" class="service-img" alt="Shahid">
+            <div class="service-name">شاهد VIP</div>
+            <span class="promo-text">🔥 تابع أقوى المسلسلات بجودة 4K</span>
+            <p class="description">حسابات رسمية، ضمان كامل، ومشاهدة بدون إعلانات مزعجة.</p>
+            <select onchange="updatePrice('shahid', this)">
+                <option value="شهر" data-price="25">اشتراك شهر (توفير)</option>
+                <option value="3 شهور" data-price="70">اشتراك 3 شهور (الأكثر طلباً)</option>
+                <option value="سنة" data-price="230">اشتراك سنة (VIP)</option>
             </select>
-            <div class="price-tag"><span>55</span> د.ل</div>
-            <a href="#" class="btn-order" onclick="requestOrder(this, 'سناب شات بلص')">
-                <i class="fab fa-whatsapp"></i> اطلب الآن
-            </a>
+            <div class="price-wrapper"><span>د.ل</span> <b class="p-val">25</b></div>
+            <input type="text" class="p-details" placeholder="رقم كرت ليبيانا/مدار أو اسم المحول">
+            <button class="btn-order" onclick="order('shahid', 'شاهد VIP')">
+                <i class="fab fa-whatsapp"></i> اطلب واستلم فوراً
+            </button>
         </div>
 
-        <div class="service-card">
-            <div class="service-icon"><i class="fab fa-telegram-plane"></i></div>
-            <div class="service-title">تليقرام بريميوم</div>
-            <select class="duration-select" onchange="updatePrice(this)">
-                <option value="3" data-price="65">3 شهور</option>
-                <option value="6" data-price="115">6 شهور</option>
-                <option value="12" data-price="210">12 شهر</option>
+        <div class="card" id="netflix">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" class="service-img" alt="Netflix">
+            <div class="service-name">نيتفلكس - Netflix</div>
+            <span class="promo-text">🎬 سينما في منزلك بأقل الأسعار</span>
+            <p class="description">شاشات خاصة بدقة Ultra HD. استمتع بأحدث الأفلام العالمية.</p>
+            <select onchange="updatePrice('netflix', this)">
+                <option value="شهر" data-price="35">شاشة شهر واحد</option>
+                <option value="3 شهور" data-price="95">شاشة 3 شهور</option>
             </select>
-            <div class="price-tag"><span>65</span> د.ل</div>
-            <a href="#" class="btn-order" onclick="requestOrder(this, 'تليقرام بريميوم')">
-                <i class="fab fa-whatsapp"></i> اطلب الآن
-            </a>
+            <div class="price-wrapper"><span>د.ل</span> <b class="p-val">35</b></div>
+            <input type="text" class="p-details" placeholder="رقم كرت ليبيانا/مدار أو اسم المحول">
+            <button class="btn-order" onclick="order('netflix', 'نيتفلكس')">
+                <i class="fab fa-whatsapp"></i> اطلب واستلم فوراً
+            </button>
         </div>
 
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-tv"></i></div>
-            <div class="service-title">نيتفلكس - شاشة خاصة</div>
-            <select class="duration-select" onchange="updatePrice(this)">
-                <option value="1" data-price="30">شهر واحد</option>
-                <option value="3" data-price="85">3 شهور</option>
+        <div class="card" id="watchit">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Watch_It_logo.png" class="service-img" alt="Watch IT" style="filter: invert(1);">
+            <div class="service-name">Watch IT</div>
+            <span class="promo-text">✨ المحتوى العربي الأصلي في مكان واحد</span>
+            <p class="description">تفعيل رسمي ومضمون 100% طوال فترة الاشتراك.</p>
+            <select onchange="updatePrice('watchit', this)">
+                <option value="شهر" data-price="20">اشتراك شهر واحد</option>
+                <option value="3 شهور" data-price="55">اشتراك 3 شهور</option>
             </select>
-            <div class="price-tag"><span>30</span> د.ل</div>
-            <a href="#" class="btn-order" onclick="requestOrder(this, 'نيتفلكس')">
-                <i class="fab fa-whatsapp"></i> اطلب الآن
-            </a>
-        </div>
-
-        <div class="service-card">
-            <div class="service-icon"><i class="fas fa-gamepad"></i></div>
-            <div class="service-title">شدات ببجي (ID)</div>
-            <select class="duration-select" onchange="updatePrice(this)">
-                <option value="325 شدة" data-price="25">325 شدة</option>
-                <option value="660 شدة" data-price="48">660 شدة</option>
-                <option value="1800 شدة" data-price="120">1800 شدة</option>
-            </select>
-            <div class="price-tag"><span>25</span> د.ل</div>
-            <a href="#" class="btn-order" onclick="requestOrder(this, 'شحن ببجي')">
-                <i class="fab fa-whatsapp"></i> اطلب الآن
-            </a>
+            <div class="price-wrapper"><span>د.ل</span> <b class="p-val">20</b></div>
+            <input type="text" class="p-details" placeholder="رقم كرت ليبيانا/مدار أو اسم المحول">
+            <button class="btn-order" onclick="order('watchit', 'واتش ات')">
+                <i class="fab fa-whatsapp"></i> اطلب واستلم فوراً
+            </button>
         </div>
 
     </div>
 </div>
 
-<div class="payment-footer">
-    <h3>طرق الدفع المحلية المدعومة</h3>
-    <div class="methods">
-        <div class="method-badge">سداد (SADAD)</div>
-        <div class="method-badge">موبي كاش</div>
-        <div class="method-badge">تداول</div>
-        <div class="method-badge">ادفع لي</div>
-        <div class="method-badge">بطاقات مصرفية</div>
+<footer>
+    <h3>طرق الدفع المدعومة في دكان ستور</h3>
+    <div class="payment-methods">
+        <div class="method"><i class="fas fa-sim-card"></i> رصيد ليبيانا</div>
+        <div class="method"><i class="fas fa-sim-card"></i> رصيد مدار</div>
+        <div class="method"><i class="fas fa-university"></i> تحويل مصرفي</div>
     </div>
-    <p style="margin-top: 40px; opacity: 0.5;">دكان ستور © 2024 - خدمة سريعة وضمان حقيقي</p>
-</div>
+    <p style="color: #4b5563;">للتواصل المباشر: 0917311459</p>
+    <p style="margin-top: 20px; font-size: 12px; color: #374151;">جميع الحقوق محفوظة لمتجر دكان ستور © 2024</p>
+</footer>
 
 <script>
-    function updatePrice(selectElement) {
-        const price = selectElement.options[selectElement.selectedIndex].getAttribute('data-price');
-        selectElement.parentElement.querySelector('.price-tag span').innerText = price;
+    function updatePrice(id, select) {
+        const price = select.options[select.selectedIndex].getAttribute('data-price');
+        document.querySelector(`#${id} .p-val`).innerText = price;
     }
 
-    function requestOrder(btn, serviceName) {
-        const card = btn.parentElement;
-        const select = card.querySelector('select');
-        const duration = select.options[select.selectedIndex].text;
-        const price = card.querySelector('.price-tag span').innerText;
-        const phoneNumber = "218917311459";
+    function order(id, name) {
+        const card = document.getElementById(id);
+        const duration = card.querySelector('select').value;
+        const price = card.querySelector('.p-val').innerText;
+        const details = card.querySelector('.p-details').value;
         
-        const message = `أهلاً دكان ستور، أريد طلب الخدمة التالية:
-🔹 الخدمة: ${serviceName}
-🔹 التفاصيل: ${duration}
-🔹 السعر: ${price} د.ل
----
-يرجى تزويدي ببيانات الدفع.`;
+        if(!details) {
+            alert('يا غالي، يرجى كتابة بيانات الدفع (رقم الكرت أو تفاصيل التحويل) أولاً.');
+            return;
+        }
 
-        window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        const phone = "218917311459";
+        const msg = `🚀 طلب تفعيل من دكان ستور:
+-------------------------
+✅ الخدمة: ${name}
+✅ المدة: ${duration}
+✅ السعر: ${price} د.ل
+💳 بيانات الدفع: ${details}
+-------------------------
+يرجى مراجعة الرصيد وإرسال التفعيل في أسرع وقت.`;
+
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 </script>
 
