@@ -1,192 +1,186 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دكان ستور | DOKAN STORE - متجرك الرقمي الأول</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --accent: #fbbf24;
-            --bg: #020617;
-            --card-bg: #0f172a;
-            --text: #f1f5f9;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokan Store</title>
 
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0; padding: 0;
-            line-height: 1.6;
-        }
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+}
 
-        header {
-            background: linear-gradient(rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.9)), 
-                        url('https://www.transparenttextures.com/patterns/dark-matter.png');
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary);
-        }
+header {
+  background:#020617;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-        .logo { font-size: 55px; font-weight: 900; color: var(--primary); text-shadow: 0 0 30px rgba(37, 99, 235, 0.4); }
-        .hero-desc { font-size: 18px; color: #94a3b8; max-width: 700px; margin: 15px auto; }
+header h1 {
+  color:#22c55e;
+}
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+.cart {
+  cursor:pointer;
+}
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.hero {
+  padding:40px;
+}
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 28px;
-            padding: 30px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease-in-out;
-            display: flex; flex-direction: column;
-            justify-content: space-between;
-        }
+.products {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-        }
+.product {
+  background:#1e293b;
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
+  width:260px;
+}
 
-        .service-icon { width: 110px; height: 110px; margin: 0 auto 20px; object-fit: contain; }
+.product img {
+  width:80px;
+}
 
-        .service-name { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
-        .highlight { color: var(--accent); font-size: 13px; font-weight: bold; margin-bottom: 15px; display: block; }
-        
-        select, input {
-            width: 100%; padding: 14px; border-radius: 12px;
-            background: #1e293b; border: 1px solid #334155;
-            color: white; font-family: 'Cairo'; margin-bottom: 15px; outline: none;
-        }
+select, button {
+  margin-top:10px;
+  padding:8px;
+  border-radius:8px;
+  border:none;
+}
 
-        .price-box { font-size: 36px; font-weight: 900; color: #10b981; margin: 15px 0; }
-        .price-box span { font-size: 16px; color: #94a3b8; font-weight: 400; }
+button {
+  background:#22c55e;
+  color:white;
+  cursor:pointer;
+}
 
-        .btn-order {
-            background: linear-gradient(135deg, #25d366 0%, #075e54 100%);
-            color: white; border: none; width: 100%; padding: 16px;
-            border-radius: 15px; font-weight: bold; font-size: 19px;
-            cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
+/* السلة */
+.cart-box {
+  position:fixed;
+  right:10px;
+  top:70px;
+  background:#020617;
+  padding:15px;
+  border-radius:10px;
+  display:none;
+  width:250px;
+}
 
-        footer { background: #010409; padding: 50px 20px; text-align: center; margin-top: 80px; border-top: 1px solid #1e293b; }
-        .pay-badges { display: flex; justify-content: center; gap: 15px; margin: 20px 0; flex-wrap: wrap; }
-        .badge { background: #1e293b; padding: 10px 20px; border-radius: 12px; font-size: 14px; border: 1px solid #334155; }
-    </style>
+.payment {
+  background:#020617;
+  padding:30px;
+  margin-top:30px;
+}
+
+footer {
+  padding:15px;
+  background:#020617;
+  margin-top:20px;
+}
+</style>
+
 </head>
+
 <body>
 
 <header>
-    <div class="logo">DOKAN STORE</div>
-    <div class="hero-desc">المصدر الموثوق للاشتراكات الرقمية في ليبيا. استمتع بأفضل العروض بأمان تام وتفعيل فوري.</div>
+  <h1>Dokan Store 🔥</h1>
+  <div class="cart" onclick="toggleCart()">🛒 (<span id="count">0</span>)</div>
 </header>
 
-<div class="container">
-    <div class="grid">
-        
-        <div class="card" id="snap">
-            <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/Snapchat_logo.svg" class="service-icon" alt="Snapchat">
-            <div class="service-name">سناب شات بلص</div>
-            <span class="highlight">⭐ ميزات حصرية ونجمة ذهبية</span>
-            <select onchange="updatePrice('snap', this)">
-                <option value="شهر" data-price="25">اشتراك شهر واحد</option>
-                <option value="6 شهور" data-price="95">اشتراك 6 شهور</option>
-                <option value="سنة" data-price="165">اشتراك سنة كاملة</option>
-            </select>
-            <div class="price-box"><span>د.ل</span> <b class="val">25</b></div>
-            <input type="text" class="details" placeholder="رقم كرت ليبيانا/مدار أو اسم المحول">
-            <button class="btn-order" onclick="sendOrder('snap', 'سناب شات بلص')">طلب عبر واتساب</button>
-        </div>
-
-        <div class="card" id="osn">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/43/OSN_Logo.svg" class="service-icon" alt="OSN" style="filter: brightness(0) invert(1);">
-            <div class="service-name">OSN+</div>
-            <span class="highlight">🎬 أفلام HBO الأصلية وحصريات عالمية</span>
-            <select onchange="updatePrice('osn', this)">
-                <option value="شهر" data-price="35">اشتراك شهر (شاشة واحدة)</option>
-                <option value="سنة" data-price="280">اشتراك سنة (توفير عملاق)</option>
-            </select>
-            <div class="price-box"><span>د.ل</span> <b class="val">35</b></div>
-            <input type="text" class="details" placeholder="رقم كرت ليبيانا/مدار أو اسم المحول">
-            <button class="btn-order" onclick="sendOrder('osn', 'OSN+')">طلب عبر واتساب</button>
-        </div>
-
-        <div class="card" id="tele">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" class="service-icon" alt="Telegram">
-            <div class="service-name">تليقرام بريميوم</div>
-            <span class="highlight">🚀 سرعة تحميل مضاعفة ومميزات خرافية</span>
-            <select onchange="updatePrice('tele', this)">
-                <option value="3 شهور" data-price="65">اشتراك 3 شهور</option>
-                <option value="6 شهور" data-price="110">اشتراك 6 شهور</option>
-                <option value="سنة" data-price="210">اشتراك سنة كاملة</option>
-            </select>
-            <div class="price-box"><span>د.ل</span> <b class="val">65</b></div>
-            <input type="text" class="details" placeholder="رقم كرت ليبيانا/مدار أو اسم المحول">
-            <button class="btn-order" onclick="sendOrder('tele', 'تليقرام بريميوم')">طلب عبر واتساب</button>
-        </div>
-
-        <div class="card" id="shahid">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Shahid_logo.svg" class="service-icon" alt="Shahid">
-            <div class="service-name">شاهد VIP</div>
-            <span class="highlight">🔥 رمضانك أحلى مع أقوى المسلسلات</span>
-            <select onchange="updatePrice('shahid', this)">
-                <option value="شهر" data-price="25">اشتراك شهر واحد</option>
-                <option value="3 شهور" data-price="70">اشتراك 3 شهور</option>
-                <option value="سنة" data-price="220">اشتراك سنة كاملة</option>
-            </select>
-            <div class="price-box"><span>د.ل</span> <b class="val">25</b></div>
-            <input type="text" class="details" placeholder="رقم كرت ليبيانا/مدار أو اسم المحول">
-            <button class="btn-order" onclick="sendOrder('shahid', 'شاهد VIP')">طلب عبر واتساب</button>
-        </div>
-
-    </div>
+<div class="cart-box" id="cartBox">
+  <h3>السلة</h3>
+  <ul id="cartItems"></ul>
+  <button onclick="sendOrder()">إرسال الطلب</button>
 </div>
 
+<section class="hero">
+  <h2>أفضل متجر اشتراكات رقمية في ليبيا 🇱🇾</h2>
+  <p>تسليم فوري ⚡ أسعار قوية 💸 دعم 24/7</p>
+</section>
+
+<section class="products">
+
+<!-- Snap -->
+<div class="product">
+  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/1024px-Snapchat_logo.svg.png">
+  <h3>Snapchat Plus 👻</h3>
+
+  <select id="snap">
+    <option value="3 شهور - 55">3 شهور - 55 دينار</option>
+    <option value="6 شهور - 95">6 شهور - 95 دينار</option>
+    <option value="12 شهر - 195">12 شهر - 195 دينار</option>
+  </select>
+
+  <button onclick="addToCart('Snapchat Plus', 'snap')">إضافة للسلة</button>
+</div>
+
+<!-- Netflix -->
+<div class="product">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
+  <h3>Netflix 🎬</h3>
+
+  <select id="netflix">
+    <option value="شهر - 25">شهر - 25 دينار</option>
+  </select>
+
+  <button onclick="addToCart('Netflix', 'netflix')">إضافة للسلة</button>
+</div>
+
+</section>
+
+<section class="payment">
+  <h2>💳 طرق الدفع</h2>
+  <p>📱 ليبيانا: 0917311459</p>
+  <p>🏦 تحويل مصرفي (راسلنا واتساب)</p>
+</section>
+
 <footer>
-    <h3>وسائل الدفع في دكان ستور</h3>
-    <div class="pay-badges">
-        <div class="badge">رصيد ليبيانا</div>
-        <div class="badge">رصيد مدار</div>
-        <div class="badge">تحويل مصرفي</div>
-    </div>
-    <p style="color: #64748b;">تواصل معنا: 0917311459</p>
-    <p style="font-size: 12px; margin-top: 25px; opacity: 0.4;">جميع الحقوق محفوظة لمتجر دكان ستور © 2024</p>
+  <p>© 2026 جميع الحقوق محفوظة - Dokan Store</p>
 </footer>
 
 <script>
-    function updatePrice(id, select) {
-        const price = select.options[select.selectedIndex].getAttribute('data-price');
-        document.querySelector(`#${id} .val`).innerText = price;
-    }
+let cart = [];
 
-    function sendOrder(id, name) {
-        const card = document.getElementById(id);
-        const duration = card.querySelector('select').value;
-        const price = card.querySelector('.val').innerText;
-        const info = card.querySelector('.details').value;
-        
-        if(!info) { alert('يرجى كتابة بيانات الدفع (الرصيد أو اسم المحول) للمتابعة.'); return; }
+function addToCart(name, id){
+  let value = document.getElementById(id).value;
+  cart.push(name + " - " + value);
+  updateCart();
+}
 
-        const phone = "218917311459";
-        const message = `🛒 طلب جديد من دكان ستور:
--------------------------
-✅ الخدمة: ${name}
-✅ المدة: ${duration}
-✅ السعر: ${price} د.ل
-💳 بيانات الدفع: ${info}
--------------------------
-ننتظر التفعيل، شكراً لكم!`;
+function updateCart(){
+  let list = document.getElementById("cartItems");
+  list.innerHTML = "";
+  cart.forEach(item=>{
+    let li = document.createElement("li");
+    li.textContent = item;
+    list.appendChild(li);
+  });
+  document.getElementById("count").textContent = cart.length;
+}
 
-        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    }
+function toggleCart(){
+  let box = document.getElementById("cartBox");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+function sendOrder(){
+  let text = "طلب جديد:%0A";
+  cart.forEach(i=> text += "- " + i + "%0A");
+
+  window.open("https://wa.me/218917311459?text=" + text);
+}
 </script>
 
 </body>
