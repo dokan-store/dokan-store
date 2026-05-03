@@ -6,23 +6,19 @@
     <title>دُكان ستور ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #D4AF37; --black: #000; }
+        :root { --gold: #D4AF37; --black: #0b0b0b; }
         body { font-family: 'Cairo', sans-serif; background: var(--black); color: #fff; margin: 0; text-align: center; }
-        header { padding: 20px; border-bottom: 2px solid var(--gold); }
-        .logo { font-size: 30px; font-weight: bold; color: var(--gold); }
-        
+        header { padding: 30px; border-bottom: 2px solid var(--gold); background: #000; }
+        .logo { font-size: 32px; font-weight: bold; color: var(--gold); text-shadow: 0 0 10px rgba(212,175,55,0.3); }
         .container { padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-        .card { background: #111; border: 1px solid #222; border-radius: 15px; width: 280px; overflow: hidden; padding-bottom: 15px; }
-        
-        /* صور مباشرة تطلع طول */
-        .card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--gold); }
-        
-        .price { font-size: 24px; color: var(--gold); margin: 10px 0; font-weight: bold; }
-        .buy-btn { background: var(--gold); color: #000; padding: 12px 30px; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 18px; }
-        
-        .payment { margin-top: 30px; padding: 20px; background: #080808; border-top: 1px solid #222; }
-        .libyana { color: #004f9f; font-weight: bold; border: 1px solid #004f9f; padding: 5px 15px; border-radius: 5px; display: inline-block; margin: 10px; }
-        .bank { color: var(--gold); border: 1px solid var(--gold); padding: 5px 15px; border-radius: 5px; display: inline-block; margin: 10px; }
+        .card { background: #161616; border: 1px solid #222; border-radius: 15px; width: 280px; overflow: hidden; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); transform: scale(1.02); }
+        .card img { width: 100%; height: 180px; object-fit: cover; display: block; background: #222; }
+        .price { font-size: 26px; color: var(--gold); margin: 15px 0; font-weight: bold; }
+        .buy-btn { background: var(--gold); color: #000; padding: 12px 0; width: 90%; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: bold; font-size: 18px; margin-bottom: 15px; }
+        .payment { margin-top: 40px; padding: 25px; background: #000; border-top: 1px solid #222; }
+        .method { border: 1px solid #333; padding: 8px 15px; border-radius: 5px; display: inline-block; margin: 5px; font-size: 14px; }
+        .libyana { color: #004f9f; border-color: #004f9f; }
     </style>
 </head>
 <body>
@@ -34,15 +30,15 @@
 <div class="container">
     <!-- نيتفليكس -->
     <div class="card">
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bca1-075839515773/86629851-4171-4475-8025-a773d726b170/LY-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg" alt="Netflix">
-        <h3>نيتفليكس 4K (45 يوم)</h3>
+        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=500&auto=format&fit=crop" alt="Netflix">
+        <h3>نيتفليكس 4K</h3>
         <div class="price">75 د.ل</div>
         <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0A---%0Aمتاكد%20من%20طلب%20؟%0A---%0Aشن%20طريقة%20دفع%20؟" class="buy-btn">اشتري الآن</a>
     </div>
 
     <!-- سناب بلس -->
     <div class="card">
-        <img src="https://images.t3n.de/products/snapchat-plus-62f4e0c8b0b9a.png" alt="Snapchat">
+        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=500&auto=format&fit=crop" alt="Snapchat">
         <h3>سناب بلس (6 شهور)</h3>
         <div class="price">95 د.ل</div>
         <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0A---%0Aمتاكد%20من%20طلب%20؟%0A---%0Aشن%20طريقة%20دفع%20؟" class="buy-btn">اشتري الآن</a>
@@ -50,7 +46,7 @@
 
     <!-- OSN -->
     <div class="card">
-        <img src="https://stream.osn.com/images/osnplus-logo-red.png" alt="OSN" style="background: #000; padding: 20px; box-sizing: border-box;">
+        <img src="https://www.osn.com/getattachment/9f170e5d-16a7-47b5-8664-96c669149027/osn-plus-logo.png" alt="OSN">
         <h3>OSN+ (شهري)</h3>
         <div class="price">40 د.ل</div>
         <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0A---%0Aمتاكد%20من%20طلب%20؟%0A---%0Aشن%20طريقة%20دفع%20؟" class="buy-btn">اشتري الآن</a>
@@ -58,10 +54,10 @@
 </div>
 
 <div class="payment">
-    <div class="libyana">📱 ليبيانا</div>
-    <div class="bank">🏦 مصرف الجمهورية</div>
-    <div class="bank">🏦 التجارة والتنمية</div>
-    <div class="bank">🏦 مصرف الوحدة</div>
+    <div class="method libyana">📱 رصيد ليبيانا</div>
+    <div class="method">🏦 مصرف الجمهورية</div>
+    <div class="method">🏦 التجارة والتنمية</div>
+    <div class="method">🏦 مصرف الوحدة</div>
 </div>
 
 </body>
