@@ -1,263 +1,192 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokan Store | دكان ستور</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-red: #A01F24;
-            --netflix-red: #E50914;
-            --dokan-gold: #d4af37;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dokan Store</title>
 
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#f1f5f9;
+}
 
-        header {
-            background: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 3px solid var(--primary-red);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+/* Header */
+.header{
+  background:white;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+.logo{
+  font-size:22px;
+  font-weight:bold;
+  color:#1e3a8a;
+}
 
-        .logo-text { font-weight: bold; font-size: 24px; color: var(--primary-red); }
+/* Banner */
+.banner{
+  background:linear-gradient(90deg,#1e3a8a,#3b82f6);
+  color:white;
+  padding:30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.banner img{
+  width:120px;
+}
 
-        /* فئات الموقع */
-        .categories-bar {
-            background: #fff;
-            padding: 10px 5%;
-            display: flex;
-            gap: 15px;
-            overflow-x: auto;
-            border-bottom: 1px solid #ddd;
-        }
+/* Layout */
+.container{
+  display:flex;
+}
 
-        .cat-btn {
-            padding: 5px 15px;
-            background: #eee;
-            border-radius: 20px;
-            text-decoration: none;
-            color: #555;
-            font-size: 14px;
-            transition: 0.3s;
-        }
+/* Sidebar */
+.sidebar{
+  width:220px;
+  background:white;
+  padding:15px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+.sidebar h3{
+  margin-bottom:10px;
+}
+.sidebar div{
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.sidebar div:hover{
+  background:#e0e7ff;
+}
 
-        .cat-btn:hover, .cat-btn.active { background: var(--primary-red); color: white; }
+/* Products */
+.products{
+  flex:1;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+  padding:20px;
+}
 
-        .container { width: 95%; margin: 20px auto; }
+.card{
+  border-radius:15px;
+  padding:15px;
+  color:white;
+  position:relative;
+  overflow:hidden;
+}
 
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-        }
+.card img{
+  width:80px;
+}
 
-        /* تصميم البطاقات المقتبس من الصور */
-        .card {
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-            overflow: hidden;
-            text-align: center;
-            padding: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
+.card h4{
+  margin:10px 0;
+}
 
-        .card-img {
-            width: 100%;
-            height: 220px;
-            border-radius: 10px;
-            background-size: cover;
-            background-position: center;
-            margin-bottom: 10px;
-            position: relative;
-        }
+.price{
+  font-size:18px;
+  margin-bottom:10px;
+}
 
-        .badge-vip {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--dokan-gold);
-            color: black;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 5px;
-        }
+button{
+  background:white;
+  color:black;
+  border:none;
+  padding:8px;
+  border-radius:10px;
+  cursor:pointer;
+}
 
-        .card h3 { font-size: 15px; margin: 5px 0; height: 40px; }
-        .price { color: #222; font-weight: bold; font-size: 18px; margin: 5px 0; }
-        
-        .buy-btn {
-            background: #000;
-            color: white;
-            padding: 10px;
-            width: 100%;
-            border-radius: 8px;
-            text-decoration: none;
-            display: block;
-            font-size: 14px;
-            font-weight: bold;
-        }
+/* Colors */
+.netflix{background:linear-gradient(135deg,#111827,#1e3a8a)}
+.shahid{background:linear-gradient(135deg,#16a34a,#22c55e)}
+.starz{background:linear-gradient(135deg,#0f172a,#3b82f6)}
+.watch{background:linear-gradient(135deg,#1e293b,#0ea5e9)}
+.osn{background:linear-gradient(135deg,#581c87,#9333ea)}
+.disney{background:linear-gradient(135deg,#0f172a,#2563eb)}
 
-        /* فوتر المميزات من الصورة */
-        .features-footer {
-            background: var(--primary-red);
-            color: white;
-            padding: 20px;
-            margin-top: 40px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            text-align: center;
-        }
+/* Footer */
+.footer{
+  background:#1e3a8a;
+  color:white;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  padding:20px;
+  text-align:center;
+}
+</style>
 
-        .feature-box i { font-size: 24px; margin-bottom: 5px; }
-        .feature-box p { margin: 0; font-size: 13px; }
-
-        .wa-float {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            z-index: 1000;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-    </style>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo-text">DOKAN STORE</div>
-        <div class="header-icons">
-            <i class="fas fa-search"></i> &nbsp; <i class="fas fa-shopping-bag"></i>
-        </div>
-    </header>
+<div class="header">
+<div class="logo">Dokan Store 👑</div>
+<div>📱 0917311459</div>
+</div>
 
-    <div class="categories-bar">
-        <a href="#" class="cat-btn active">الكل</a>
-        <a href="#" class="cat-btn">ترفيه</a>
-        <a href="#" class="cat-btn">ألعاب</a>
-        <a href="#" class="cat-btn">تطبيقات</a>
-    </div>
+<div class="banner">
+<div>
+<h2>Dokan Store - أفضل متجر اشتراكات رقمية</h2>
+<p>تسليم فوري ⚡ منتجات مضمونة 💎</p>
+</div>
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
+</div>
 
-    <div class="container">
-        <div class="product-grid">
-            
-            <!-- نتفليكس - سعر عالي -->
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://i.imgur.com/TskvRzM.png'); background-color: #E50914;">
-                    <span class="badge-vip">4K HDR</span>
-                </div>
-                <h3>اشتراك نتفليكس (45 يوم)</h3>
-                <div class="price">75 دينار</div>
-                <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
-            </div>
+<div class="container">
 
-            <!-- شاهد VIP - سعر عالي -->
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://i.imgur.com/Z4T6pU7.png'); background-color: #00d46a;">
-                    <span class="badge-vip">موبايل</span>
-                </div>
-                <h3>اشتراك شاهد (هواتف)</h3>
-                <div class="price">55 دينار</div>
-                <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
-            </div>
+<!-- Sidebar -->
+<div class="sidebar">
+<h3>الفئات</h3>
+<div>🎬 Streaming</div>
+<div>🎮 Gaming</div>
+<div>💻 Software</div>
+<div>📱 Social</div>
+</div>
 
-            <!-- واتش ات -->
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://i.imgur.com/Y8X8zWp.png'); background-color: #000;">
-                    <span class="badge-vip">شهري</span>
-                </div>
-                <h3>اشتراك واتش ات (Watch It)</h3>
-                <div class="price">45 دينار</div>
-                <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
-            </div>
+<!-- Products -->
+<div class="products">
 
-            <!-- ديزني بلس -->
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://i.imgur.com/your-disney-link.png'); background-color: #001e3d;">
-                    <span class="badge-vip">أصلي</span>
-                </div>
-                <h3>اشتراك ديزني بلس</h3>
-                <div class="price">50 دينار</div>
-                <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
-            </div>
+<div class="card netflix">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
+<h4>Netflix 45 يوم</h4>
+<div class="price">85 دينار</div>
+<button onclick="order('Netflix')">اشترك الآن</button>
+</div>
 
-            <!-- يانغو بلاي -->
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://i.imgur.com/your-yango-link.png'); background-color: #ff00ff;">
-                </div>
-                <h3>اشتراك يانغو بلاي (Yango)</h3>
-                <div class="price">40 دينار</div>
-                <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
-            </div>
+<div class="card shahid">
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Shahid_logo.svg">
+<h4>Shahid VIP</h4>
+<div class="price">40 دينار</div>
+<button onclick="order('Shahid')">اشترك الآن</button>
+</div>
 
-            <!-- ستارز بلاي -->
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://i.imgur.com/your-starz-link.png'); background-color: #00c2cb;">
-                </div>
-                <h3>اشتراك ستارز بلاي (StarzPlay)</h3>
-                <div class="price">45 دينار</div>
-                <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
-            </div>
+<div class="card starz">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Starzplay_logo.png">
+<h4>StarzPlay</h4>
+<div class="price">35 دينار</div>
+<button onclick="order('Starz')">اشترك الآن</button>
+</div>
 
-            <!-- سناب بلس -->
-            <div class="card">
-                <div class="card-img" style="background-image: url('https://i.imgur.com/your-snap-link.png'); background-color: #FFFC00;">
-                </div>
-                <h3>سناب شات بلس (3 أشهر)</h3>
-                <div class="price">110 دينار</div>
-                <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
-            </div>
+<div class="card watch">
+<img src="https://i.imgur.com/K5Z6x2fl.jpg">
+<h4>Watch It</h4>
+<div class="price">35 دينار</div>
+<button onclick="order('Watch It')">اشترك الآن</button>
+</div>
 
-        </div>
-    </div>
+<div class="card osn">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/65/OSN_logo.png">
+<h4>OSN+</h4>
+<div class="price">35 دينار</div>
+<button onclick="order('OSN')">اشترك الآن</button>
+</div>
 
-    <!-- قسم المميزات من الصورة الأصلية -->
-    <div class="features-footer">
-        <div class="feature-box">
-            <i class="fas fa-handshake"></i>
-            <p>مصدر موثوق</p>
-        </div>
-        <div class="feature-box">
-            <i class="fas fa-bolt"></i>
-            <p>تسليم فوري</p>
-        </div>
-        <div class="feature-box">
-            <i class="fas fa-headset"></i>
-            <p>دعم ومتابعة</p>
-        </div>
-        <div class="feature-box">
-            <i class="fas fa-shield-alt"></i>
-            <p>منتجات مضمونة</p>
-        </div>
-    </div>
-
-    <!-- زر واتساب برقمك 0917311459 -->
-    <a href="https://wa.me/218917311459" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-</body>
-</html>
+<div class="card disney">
+<img src="https
