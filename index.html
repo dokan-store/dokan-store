@@ -6,80 +6,26 @@
     <title>دُكان ستور ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --gold: #D4AF37; 
-            --dark-bg: #0f0f0f;
-            --card-bg: #1a1a1a;
-            --libyana: #004f9f;
-        }
-        
-        body { 
-            font-family: 'Cairo', sans-serif; 
-            background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%);
-            color: #fff; 
-            margin: 0; 
-            text-align: center;
-        }
-
-        /* شريط علوي */
-        .top-bar { 
-            background: linear-gradient(90deg, var(--gold), #f3cf65, var(--gold));
-            color: #000; padding: 10px 0; font-size: 14px; font-weight: bold;
-        }
-
+        :root { --gold: #D4AF37; --card-bg: #1a1a1a; --libyana: #004f9f; }
+        body { font-family: 'Cairo', sans-serif; background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%); color: #fff; margin: 0; text-align: center; }
+        .top-bar { background: linear-gradient(90deg, var(--gold), #f3cf65, var(--gold)); color: #000; padding: 10px 0; font-size: 14px; font-weight: bold; }
         header { padding: 40px 20px; }
         .logo { font-size: 45px; font-weight: bold; color: var(--gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
         .slogan { color: #ccc; font-size: 18px; margin-top: 10px; font-weight: bold; }
-
-        .section-title { color: var(--gold); margin: 40px 0 20px; font-size: 24px; text-decoration: underline; }
-
-        .container { 
-            padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; 
-        }
-
-        .card { 
-            background: var(--card-bg); border: 1px solid #333; border-radius: 20px; 
-            width: 280px; overflow: hidden; transition: 0.4s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-
+        .container { padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
+        .card { background: var(--card-bg); border: 1px solid #333; border-radius: 20px; width: 280px; overflow: hidden; transition: 0.4s; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .card:hover { border-color: var(--gold); transform: translateY(-10px); }
-
-        .icon-circle {
-            width: 90px; height: 90px; margin: 20px auto; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 45px;
-            background: #252525; box-shadow: inset 2px 2px 10px #000;
-        }
-
-        .price { font-size: 26px; color: var(--gold); margin: 10px 0; font-weight: bold; }
-
+        
+        /* تنسيق الصور الجديد */
+        .card-img { width: 100%; height: 160px; object-fit: cover; border-bottom: 2px solid var(--gold); }
+        
+        .desc { font-size: 13px; color: #aaa; padding: 10px 15px; min-height: 40px; }
+        .price { font-size: 26px; color: var(--gold); margin: 5px 0; font-weight: bold; }
         .btn-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; }
-        .buy-btn { 
-            padding: 12px; border-radius: 12px; text-decoration: none; 
-            font-weight: bold; font-size: 14px; transition: 0.3s;
-        }
-
+        .buy-btn { padding: 12px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; }
         .btn-libyana { background: var(--libyana); color: #fff; }
         .btn-bank { background: var(--gold); color: #000; }
-        
-        /* قسم الخدمات الإضافية */
-        .extra-services {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 30px 10px; margin-top: 50px; border-top: 2px solid var(--gold);
-        }
-
-        .extra-grid {
-            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
-        }
-
-        .extra-item {
-            background: #222; padding: 15px; border-radius: 15px; width: 180px;
-            border: 1px dashed #444; transition: 0.3s;
-        }
-        .extra-item:hover { border-color: var(--gold); background: #282828; }
-        .extra-item i { font-size: 35px; display: block; margin-bottom: 10px; }
-
-        .footer { padding: 40px 20px; color: #666; font-size: 13px; }
+        .footer { padding: 40px 20px; color: #666; font-size: 13px; border-top: 1px solid #222; margin-top: 50px; }
     </style>
 </head>
 <body>
@@ -92,67 +38,66 @@
 </header>
 
 <div class="container">
+    <!-- نيتفليكس -->
     <div class="card">
-        <div class="icon-circle" style="background: #E50914;">🎬</div>
+        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=500&auto=format&fit=crop" class="card-img" alt="Netflix">
         <div class="card-content">
             <h3>نيتفليكس 4K</h3>
+            <p class="desc">إشتراك VIP - ملف خاص بجهاز واحد بجودة Ultra HD</p>
             <div class="price">75 د.ل</div>
             <div class="btn-group">
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20نيتفليكس%204K%0Aالدفع%3A%20رصيد%20ليبيانا%20📱" class="buy-btn btn-libyana">ليبيانا 📱</a>
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20نيتفليكس%204K%0Aالدفع%3A%20تحويل%20مصرفي%20🏦" class="buy-btn btn-bank">مصرف 🏦</a>
+                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20نيتفليكس%204K" class="buy-btn btn-libyana">ليبيانا 📱</a>
+                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20نيتفليكس%204K" class="buy-btn btn-bank">مصرف 🏦</a>
             </div>
         </div>
     </div>
 
+    <!-- سناب بلس 6 شهور -->
     <div class="card">
-        <div class="icon-circle" style="background: #FFFC00; color: #000;">👻</div>
+        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=500&auto=format&fit=crop" class="card-img" alt="Snapchat">
         <div class="card-content">
             <h3>سناب بلس (6 شهور)</h3>
+            <p class="desc">تفعيل مباشر لجميع مميزات سناب شات بلس الرسمي</p>
             <div class="price">95 د.ل</div>
             <div class="btn-group">
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20سناب%206%20شهور%0Aالدفع%3A%20رصيد%20ليبيانا%20📱" class="buy-btn btn-libyana">ليبيانا 📱</a>
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20سناب%206%20شهور%0Aالدفع%3A%20تحويل%20مصرفي%20🏦" class="buy-btn btn-bank">مصرف 🏦</a>
+                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20سناب%206%20شهور" class="buy-btn btn-libyana">ليبيانا 📱</a>
+                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20سناب%206%20شهور" class="buy-btn btn-bank">مصرف 🏦</a>
             </div>
         </div>
     </div>
 
+    <!-- واتش ات -->
     <div class="card">
-        <div class="icon-circle" style="background: #00d46a;">🌟</div>
+        <img src="https://www.watchit.com/og-image.png" class="card-img" alt="Watch It" onerror="this.src='https://via.placeholder.com/500x300/000000/D4AF37?text=Watch+It+VIP'">
+        <div class="card-content">
+            <h3>واتش ات (Watch It)</h3>
+            <p class="desc">إشتراك VIP شهري - ملف خاص بجهاز واحد</p>
+            <div class="price">75 د.ل</div>
+            <div class="btn-group">
+                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20واتش%20ات" class="buy-btn btn-libyana">ليبيانا 📱</a>
+                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20واتش%20ات" class="buy-btn btn-bank">مصرف 🏦</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- شاهد -->
+    <div class="card">
+        <img src="https://static.shahid.net/mediaObject/New-Shahid-Logo/original/New-Shahid-Logo.png" class="card-img" style="background:#00d46a; object-fit: contain; padding:20px;" alt="Shahid">
         <div class="card-content">
             <h3>شاهد VIP (شهري)</h3>
+            <p class="desc">إشتراك VIP - ملف خاص بجهاز واحد شامل الرياضة</p>
             <div class="price">30 د.ل</div>
             <div class="btn-group">
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20شاهد%20VIP%0Aالدفع%3A%20رصيد%20ليبيانا%20📱" class="buy-btn btn-libyana">ليبيانا 📱</a>
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20شاهد%20VIP%0Aالدفع%3A%20تحويل%20مصرفي%20🏦" class="buy-btn btn-bank">مصرف 🏦</a>
+                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20شاهد%20VIP" class="buy-btn btn-libyana">ليبيانا 📱</a>
+                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20شاهد%20VIP" class="buy-btn btn-bank">مصرف 🏦</a>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="extra-services">
-    <div class="section-title">إضافات دُكان ستور الأخرى ✨</div>
-    <div class="extra-grid">
-        <div class="extra-item">
-            <span>✈️</span>
-            <h4>تيليجرام بريميوم</h4>
-            <a href="https://wa.me/218917311459?text=نبي%20استفسر%20عن%20تيليجرام%20بريميوم" style="color: var(--gold); text-decoration: none; font-size: 12px;">طلب الآن ←</a>
-        </div>
-        <div class="extra-item">
-            <span>🍎</span>
-            <h4>كروت آيتونز</h4>
-            <a href="https://wa.me/218917311459?text=نبي%20كروت%20آيتونز" style="color: var(--gold); text-decoration: none; font-size: 12px;">طلب الآن ←</a>
-        </div>
-        <div class="extra-item">
-            <span>🔫</span>
-            <h4>شدات ببجي</h4>
-            <a href="https://wa.me/218917311459?text=نبي%20شدات%20ببجي" style="color: var(--gold); text-decoration: none; font-size: 12px;">طلب الآن ←</a>
         </div>
     </div>
 </div>
 
 <div class="footer">
     <p>دُكان ستور ✨ | تواصل معنا عبر واتساب 0917311459</p>
-    <p style="opacity: 0.5;">تصميم احترافي سريع - 2026</p>
+    <p>جميع الحقوق محفوظة 2026</p>
 </div>
 
 </body>
