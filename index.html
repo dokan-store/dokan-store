@@ -7,26 +7,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --red: #A01F24; --black: #1a1a1a; --libyana-blue: #004f9f; }
+        :root { --red: #A01F24; --black: #1a1a1a; --libyana: #004f9f; }
         body { font-family: 'Cairo', sans-serif; background: #f4f4f4; margin: 0; }
         header { background: #fff; padding: 15px; text-align: center; border-bottom: 4px solid var(--red); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .logo { font-size: 26px; font-weight: bold; color: var(--red); }
         .container { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
-        .card { background: #fff; border-radius: 15px; padding: 15px; text-align: center; border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
-        .card img { width: 100%; border-radius: 10px; height: 160px; object-fit: cover; }
-        .price { font-size: 20px; font-weight: bold; color: var(--black); margin: 10px 0; }
-        .buy-btn { background: #000; color: #fff; padding: 10px; border-radius: 8px; text-decoration: none; display: block; font-weight: bold; font-size: 14px; }
+        .card { background: #fff; border-radius: 15px; padding: 15px; text-align: center; border: 1px solid #ddd; position: relative; }
         
-        /* قسم طرق الدفع الليبية */
-        .payment-methods { background: #fff; padding: 25px; margin-top: 30px; text-align: center; border-top: 1px solid #ddd; }
-        .payment-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #555; }
-        .payment-icons { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; }
-        .payment-icons img { height: 50px; filter: grayscale(20%); transition: 0.3s; }
-        .payment-icons img:hover { filter: grayscale(0%); transform: scale(1.1); }
-        .libyana-tag { color: var(--libyana-blue); font-weight: bold; display: block; margin-top: 5px; font-size: 12px; }
+        /* بديل للصور لو ما طلعتش تطلع أيقونة فخمة */
+        .img-placeholder { 
+            width: 100%; height: 160px; border-radius: 10px; 
+            background: #eee; display: flex; align-items: center; 
+            justify-content: center; font-size: 50px; color: #ccc;
+            margin-bottom: 10px; overflow: hidden;
+        }
+        .card img { width: 100%; height: 100%; object-fit: cover; }
 
-        .features { background: var(--red); color: #fff; display: grid; grid-template-columns: 1fr 1fr; padding: 20px; text-align: center; gap: 15px; margin-top: 0; }
-        .wa-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; text-decoration: none; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .price { font-size: 20px; font-weight: bold; color: var(--black); margin: 10px 0; }
+        .buy-btn { background: #000; color: #fff; padding: 12px; border-radius: 8px; text-decoration: none; display: block; font-weight: bold; }
+        
+        .payment-section { background: #fff; padding: 20px; text-align: center; border-top: 1px solid #ddd; margin-top: 20px; }
+        .libyana-logo { color: var(--libyana); font-weight: bold; font-size: 20px; margin: 10px 0; }
+        
+        .features { background: var(--red); color: #fff; display: grid; grid-template-columns: 1fr 1fr; padding: 20px; text-align: center; gap: 15px; }
+        .wa-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; }
     </style>
 </head>
 <body>
@@ -36,7 +40,9 @@
 <div class="container">
     <!-- نيتفليكس -->
     <div class="card">
-        <img src="https://assets.nflxext.com/ffe/siteui/vlv3/f841d4c7-10e1-40af-bca1-0758418ff7a5/ada313b3-8321-4f10-91c2-c0e816a75f10/LY-en-20220502-popsignuptwoweeks-perspective_alpha_website_medium.jpg" alt="Netflix">
+        <div class="img-placeholder" style="background: #E50914; color: #fff;">
+            <i class="fab fa-netflix"></i>
+        </div>
         <h3>نتفليكس (45 يوم)</h3>
         <div class="price">75 دينار</div>
         <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
@@ -44,7 +50,9 @@
 
     <!-- شاهد -->
     <div class="card">
-        <img src="https://shahid.mbc.net/static/images/shahid-logo-new.png" alt="Shahid" style="background:#00d46a; padding:10px; height:140px; object-fit:contain;">
+        <div class="img-placeholder" style="background: #00d46a; color: #fff;">
+            <i class="fas fa-play"></i>
+        </div>
         <h3>شاهد VIP (شهري)</h3>
         <div class="price">30 دينار</div>
         <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
@@ -52,7 +60,9 @@
 
     <!-- سناب بلس 3 شهور -->
     <div class="card">
-        <img src="https://bt-wpmsa.s3.amazonaws.com/2022/06/Snapchat-Plus.jpg" alt="Snapchat">
+        <div class="img-placeholder" style="background: #FFFC00; color: #000;">
+            <i class="fab fa-snapchat"></i>
+        </div>
         <h3>سناب بلس (3 شهور)</h3>
         <div class="price">55 دينار</div>
         <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
@@ -60,7 +70,9 @@
 
     <!-- سناب بلس 6 شهور -->
     <div class="card">
-        <img src="https://bt-wpmsa.s3.amazonaws.com/2022/06/Snapchat-Plus.jpg" alt="Snapchat">
+        <div class="img-placeholder" style="background: #FFFC00; color: #000;">
+            <i class="fab fa-snapchat"></i>
+        </div>
         <h3>سناب بلس (6 شهور)</h3>
         <div class="price">95 دينار</div>
         <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
@@ -68,7 +80,9 @@
 
     <!-- OSN -->
     <div class="card">
-        <img src="https://www.osn.com/getattachment/90e0b3b2-3b3b-4b3b-8b3b-3b3b3b3b3b3b/OSN-Plus-Logo.png.aspx" alt="OSN" style="background:#702283; padding:10px; height:140px; object-fit:contain;">
+        <div class="img-placeholder" style="background: #702283; color: #fff;">
+            <span>OSN</span>
+        </div>
         <h3>OSN+ (شهري)</h3>
         <div class="price">40 دينار</div>
         <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
@@ -76,38 +90,27 @@
 
     <!-- واتش ات -->
     <div class="card">
-        <img src="https://www.watchit.com/static/images/logo-white.png" alt="WatchIt" style="background:#000; padding:10px; height:140px; object-fit:contain;">
+        <div class="img-placeholder" style="background: #000; color: #fff;">
+            <i class="fas fa-tv"></i>
+        </div>
         <h3>واتش ات (Watch It)</h3>
         <div class="price">70 دينار</div>
         <a href="https://wa.me/218917311459" class="buy-btn">اشتري الآن</a>
     </div>
 </div>
 
-<!-- قسم الدفع والمصارف -->
-<div class="payment-methods">
-    <div class="payment-title">طرق الدفع المتوفرة</div>
-    <div class="payment-icons">
-        <!-- رصيد ليبيانا -->
-        <div style="text-align:center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Libyana_Logo.svg" alt="Libyana">
-            <span class="libyana-tag">رصيد ليبيانا</span>
-        </div>
-        <!-- تمثيل للمصارف الليبية -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Bank_icon.svg/512px-Bank_icon.svg.png" alt="تحويل مصرفي" title="جميع المصارف الليبية">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Visa_logo.svg/512px-Visa_logo.svg.png" alt="Visa/MasterCard">
-    </div>
-    <p style="font-size: 13px; color: #777; margin-top: 10px;">نقبل التحويل المصرفي (التجارة والتنمية، الوحدة، الجمهورية) ورصيد ليبيانا.</p>
+<div class="payment-section">
+    <p>طرق الدفع المتوفرة</p>
+    <div class="libyana-logo">LIBYANA | ليبيانا</div>
+    <p>تحويل مصرفي (جميع المصارف الليبية)</p>
 </div>
 
 <div class="features">
     <div><i class="fas fa-bolt"></i><p>تسليم فوري</p></div>
     <div><i class="fas fa-handshake"></i><p>مصدر موثوق</p></div>
-    <div><i class="fas fa-shield-alt"></i><p>منتجات مضمونة</p></div>
-    <div><i class="fas fa-headset"></i><p>دعم ومتابعة</p></div>
 </div>
 
-<!-- زر واتساب برقمك 0917311459 -->
-<a href="https://wa.me/218917311459" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/218917311459" class="wa-float"><i class="fab fa-whatsapp"></i></a>
 
 </body>
 </html>
