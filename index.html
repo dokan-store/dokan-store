@@ -1,104 +1,1075 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دُكان ستور ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --gold: #D4AF37; --card-bg: #1a1a1a; --libyana: #004f9f; }
-        body { font-family: 'Cairo', sans-serif; background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%); color: #fff; margin: 0; text-align: center; }
-        .top-bar { background: linear-gradient(90deg, var(--gold), #f3cf65, var(--gold)); color: #000; padding: 10px 0; font-size: 14px; font-weight: bold; }
-        header { padding: 40px 20px; }
-        .logo { font-size: 45px; font-weight: bold; color: var(--gold); text-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
-        .slogan { color: #ccc; font-size: 18px; margin-top: 10px; font-weight: bold; }
-        .container { padding: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; }
-        .card { background: var(--card-bg); border: 1px solid #333; border-radius: 20px; width: 280px; overflow: hidden; transition: 0.4s; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
-        
-        /* تنسيق الصور الجديد */
-        .card-img { width: 100%; height: 160px; object-fit: cover; border-bottom: 2px solid var(--gold); }
-        
-        .desc { font-size: 13px; color: #aaa; padding: 10px 15px; min-height: 40px; }
-        .price { font-size: 26px; color: var(--gold); margin: 5px 0; font-weight: bold; }
-        .btn-group { display: flex; flex-direction: column; gap: 10px; padding: 15px; }
-        .buy-btn { padding: 12px; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 13px; transition: 0.3s; }
-        .btn-libyana { background: var(--libyana); color: #fff; }
-        .btn-bank { background: var(--gold); color: #000; }
-        .footer { padding: 40px 20px; color: #666; font-size: 13px; border-top: 1px solid #222; margin-top: 50px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دوكان ستور | اشتراكات رقمية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b14;
+    --bg2: #0d1120;
+    --bg3: #111827;
+    --card: #141a2e;
+    --card2: #1a2240;
+    --accent: #00d4ff;
+    --accent2: #7c3aed;
+    --accent3: #f59e0b;
+    --text: #f0f4ff;
+    --muted: #8899bb;
+    --border: rgba(0,212,255,0.12);
+    --glow: 0 0 30px rgba(0,212,255,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(0,212,255,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,58,237,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8,11,20,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Tajawal', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+  }
+  .logo span:first-child { color: var(--text); }
+  .logo span:last-child {
+    color: var(--accent);
+    text-shadow: 0 0 15px rgba(0,212,255,0.5);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.5rem 1.4rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 0 20px rgba(0,212,255,0.3);
+  }
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0,212,255,0.5);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 5%;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25);
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    font-size: 0.82rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .hero h1 {
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .hero h1 .highlight {
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(0,212,255,0.4);
+    display: inline;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.9s ease forwards;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #0099cc);
+    color: var(--bg);
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 4px 25px rgba(0,212,255,0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 35px rgba(0,212,255,0.45);
+  }
+
+  .btn-wa {
+    background: rgba(37,211,102,0.12);
+    border: 1px solid rgba(37,211,102,0.3);
+    color: #25d366;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-wa:hover {
+    background: rgba(37,211,102,0.2);
+    transform: translateY(-3px);
+  }
+
+  /* Hero visual side */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-cards-stack {
+    position: relative;
+    width: 340px;
+    height: 400px;
+  }
+
+  .service-card-preview {
+    position: absolute;
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.08);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .scp-1 {
+    background: linear-gradient(135deg, #1a0a2e, #2d1058);
+    width: 220px;
+    top: 0; right: 0;
+    animation-delay: 0s;
+    box-shadow: 0 20px 60px rgba(124,58,237,0.3);
+  }
+  .scp-2 {
+    background: linear-gradient(135deg, #0a1628, #0d2444);
+    width: 200px;
+    bottom: 60px; left: 0;
+    animation-delay: 1s;
+    box-shadow: 0 20px 60px rgba(0,212,255,0.2);
+  }
+  .scp-3 {
+    background: linear-gradient(135deg, #1a1200, #2d2000);
+    width: 180px;
+    bottom: 0; right: 20px;
+    animation-delay: 2s;
+    box-shadow: 0 20px 60px rgba(245,158,11,0.2);
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .scp-logo {
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+  }
+  .scp-name { font-weight: 700; font-size: 0.95rem; }
+  .scp-price { font-size: 0.85rem; color: var(--muted); }
+  .scp-price strong { color: var(--accent3); font-size: 1rem; }
+  .scp-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    background: rgba(0,212,255,0.15);
+    color: var(--accent);
+    width: fit-content;
+    margin-top: 0.3rem;
+  }
+
+  /* STATS */
+  .stats-bar {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,17,32,0.8);
+    padding: 2rem 5%;
+  }
+  .stats-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent);
+    text-shadow: 0 0 15px rgba(0,212,255,0.3);
+  }
+  .stat-label { color: var(--muted); font-size: 0.88rem; margin-top: 0.2rem; }
+
+  /* SERVICES */
+  .section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: 'Tajawal', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.8rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,212,255,0.3);
+    box-shadow: var(--glow);
+  }
+
+  .service-card:hover::before { opacity: 1; }
+
+  .sc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+  }
+
+  .sc-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+  }
+
+  .sc-hot {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    color: white;
+    height: fit-content;
+  }
+
+  .sc-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .sc-desc {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .sc-pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .sc-price-from { font-size: 0.78rem; color: var(--muted); }
+  .sc-price-val {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent3);
+  }
+  .sc-price-val small { font-size: 0.75rem; color: var(--muted); font-weight: 400; }
+
+  .sc-order-btn {
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.2);
+    color: var(--accent);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .sc-order-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* Service card colors */
+  .sc-netflix .sc-icon { background: linear-gradient(135deg, #1a0000, #3d0000); }
+  .sc-spotify .sc-icon { background: linear-gradient(135deg, #001a08, #004d18); }
+  .sc-canva .sc-icon { background: linear-gradient(135deg, #00081a, #001a4d); }
+  .sc-office .sc-icon { background: linear-gradient(135deg, #1a0800, #4d1e00); }
+  .sc-yt .sc-icon { background: linear-gradient(135deg, #1a0000, #4d0000); }
+  .sc-discord .sc-icon { background: linear-gradient(135deg, #0a0a1a, #1a1a4d); }
+  .sc-adobe .sc-icon { background: linear-gradient(135deg, #1a0000, #4d0000); }
+  .sc-prime .sc-icon { background: linear-gradient(135deg, #00081a, #001540); }
+
+  /* HOW IT WORKS */
+  .steps-wrap {
+    background: var(--bg2);
+    padding: 5rem 5%;
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .steps-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    right: 12.5%;
+    left: 12.5%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0.3;
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #0099cc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--bg);
+    margin: 0 auto 1.2rem;
+    box-shadow: 0 0 20px rgba(0,212,255,0.3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+  .step-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+  /* TRUST */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .trust-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .trust-card:hover {
+    border-color: rgba(0,212,255,0.2);
+    transform: translateY(-4px);
+  }
+
+  .trust-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .trust-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+  .trust-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+  /* TESTIMONIALS */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .review-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 1.8rem;
+    position: relative;
+  }
+
+  .review-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.15;
+    font-family: serif;
+    line-height: 1;
+  }
+
+  .review-stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 0.8rem; }
+  .review-text { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.2rem; }
+  .review-author { display: flex; align-items: center; gap: 0.8rem; }
+  .review-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: white;
+  }
+  .review-name { font-weight: 700; font-size: 0.88rem; }
+  .review-city { color: var(--muted); font-size: 0.78rem; }
+
+  /* CTA */
+  .cta-section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 5%;
+    text-align: center;
+  }
+
+  .cta-box {
+    max-width: 700px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(124,58,237,0.06));
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 30px;
+    padding: 4rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 32px;
+    background: linear-gradient(135deg, rgba(0,212,255,0.1), transparent, rgba(124,58,237,0.1));
+    z-index: -1;
+  }
+
+  .cta-box h2 {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box p { color: var(--muted); margin-bottom: 2rem; font-size: 1rem; line-height: 1.7; }
+
+  .wa-big-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 4px 25px rgba(37,211,102,0.35);
+  }
+  .wa-big-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 40px rgba(37,211,102,0.5);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 5%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-inner {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-copy { color: var(--muted); font-size: 0.85rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Floating orbs */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    animation: orbFloat 12s ease-in-out infinite;
+  }
+  .orb-1 {
+    width: 400px; height: 400px;
+    background: rgba(0,212,255,0.04);
+    top: -100px; right: -100px;
+  }
+  .orb-2 {
+    width: 300px; height: 300px;
+    background: rgba(124,58,237,0.05);
+    bottom: 20%; left: -80px;
+    animation-delay: 4s;
+  }
+
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(30px, -20px); }
+    66% { transform: translate(-20px, 30px); }
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-visual { display: none; }
+    .hero p { margin: 0 auto 2.5rem; }
+    .hero-btns { justify-content: center; }
+    .hero-badge { margin: 0 auto 1.5rem; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid::before { display: none; }
+    .trust-grid, .reviews-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-<div class="top-bar">🔥 عروض حصرية لفترة محدودة فـ دُكان ستور 🔥</div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-<header>
-    <div class="logo">دُكان ستور ✨</div>
-    <div class="slogan">كل اللي تحتاجه من اشتراكات وكروت ف مكان واحد 👑</div>
-</header>
+<!-- NAV -->
+<nav>
+  <div class="logo"><span>دوكان</span><span>ستور</span></div>
+  <ul class="nav-links">
+    <li><a href="#">الرئيسية</a></li>
+    <li><a href="#">الخدمات</a></li>
+    <li><a href="#">الأسعار</a></li>
+    <li><a href="#">تواصل معنا</a></li>
+  </ul>
+  <a href="https://wa.me/218917311459" class="nav-cta">اطلب الآن</a>
+</nav>
 
-<div class="container">
-    <!-- نيتفليكس -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=500&auto=format&fit=crop" class="card-img" alt="Netflix">
-        <div class="card-content">
-            <h3>نيتفليكس 4K</h3>
-            <p class="desc">إشتراك VIP - ملف خاص بجهاز واحد بجودة Ultra HD</p>
-            <div class="price">75 د.ل</div>
-            <div class="btn-group">
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20نيتفليكس%204K" class="buy-btn btn-libyana">ليبيانا 📱</a>
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20نيتفليكس%204K" class="buy-btn btn-bank">مصرف 🏦</a>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">🇱🇾 متجر ليبي موثوق — تسليم فوري</div>
+      <h1>اشتراكاتك الرقمية<br>بأفضل <span class="highlight">الأسعار</span></h1>
+      <p>نتفليكس، سبوتيفاي، كانفا، أوفيس وأكثر — اشتري بثقة مع ضمان كامل المدة وتسليم فوري عبر واتساب.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-primary">🛒 تصفح الخدمات</a>
+        <a href="https://wa.me/218917311459" class="btn-wa">💬 واتساب</a>
+      </div>
     </div>
-
-    <!-- سناب بلس 6 شهور -->
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=500&auto=format&fit=crop" class="card-img" alt="Snapchat">
-        <div class="card-content">
-            <h3>سناب بلس (6 شهور)</h3>
-            <p class="desc">تفعيل مباشر لجميع مميزات سناب شات بلس الرسمي</p>
-            <div class="price">95 د.ل</div>
-            <div class="btn-group">
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20سناب%206%20شهور" class="buy-btn btn-libyana">ليبيانا 📱</a>
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20سناب%206%20شهور" class="buy-btn btn-bank">مصرف 🏦</a>
-            </div>
+    <div class="hero-visual">
+      <div class="hero-cards-stack">
+        <div class="service-card-preview scp-1">
+          <div class="scp-logo">🎬</div>
+          <div class="scp-name">Netflix Premium</div>
+          <div class="scp-price">من <strong>12 د.ل</strong> / شهر</div>
+          <div class="scp-badge">✅ تسليم فوري</div>
         </div>
-    </div>
-
-    <!-- واتش ات -->
-    <div class="card">
-        <img src="https://www.watchit.com/og-image.png" class="card-img" alt="Watch It" onerror="this.src='https://via.placeholder.com/500x300/000000/D4AF37?text=Watch+It+VIP'">
-        <div class="card-content">
-            <h3>واتش ات (Watch It)</h3>
-            <p class="desc">إشتراك VIP شهري - ملف خاص بجهاز واحد</p>
-            <div class="price">75 د.ل</div>
-            <div class="btn-group">
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20واتش%20ات" class="buy-btn btn-libyana">ليبيانا 📱</a>
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20واتش%20ات" class="buy-btn btn-bank">مصرف 🏦</a>
-            </div>
+        <div class="service-card-preview scp-2">
+          <div class="scp-logo">🎵</div>
+          <div class="scp-name">Spotify Premium</div>
+          <div class="scp-price">من <strong>8 د.ل</strong> / شهر</div>
+          <div class="scp-badge">✅ مضمون</div>
         </div>
-    </div>
-
-    <!-- شاهد -->
-    <div class="card">
-        <img src="https://static.shahid.net/mediaObject/New-Shahid-Logo/original/New-Shahid-Logo.png" class="card-img" style="background:#00d46a; object-fit: contain; padding:20px;" alt="Shahid">
-        <div class="card-content">
-            <h3>شاهد VIP (شهري)</h3>
-            <p class="desc">إشتراك VIP - ملف خاص بجهاز واحد شامل الرياضة</p>
-            <div class="price">30 د.ل</div>
-            <div class="btn-group">
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20شاهد%20VIP" class="buy-btn btn-libyana">ليبيانا 📱</a>
-                <a href="https://wa.me/218917311459?text=دُكان%20ستور%20✨%0Aالطلب%3A%20شاهد%20VIP" class="buy-btn btn-bank">مصرف 🏦</a>
-            </div>
+        <div class="service-card-preview scp-3">
+          <div class="scp-logo">🎨</div>
+          <div class="scp-name">Canva Pro</div>
+          <div class="scp-price">من <strong>10 د.ل</strong> / شهر</div>
+          <div class="scp-badge">✅ أصلي</div>
         </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">+500</div>
+      <div class="stat-label">عميل راضي</div>
+    </div>
+    <div>
+      <div class="stat-num">+20</div>
+      <div class="stat-label">خدمة متاحة</div>
+    </div>
+    <div>
+      <div class="stat-num">فوري</div>
+      <div class="stat-label">وقت التسليم</div>
+    </div>
+    <div>
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">دعم العملاء</div>
+    </div>
+  </div>
 </div>
 
-<div class="footer">
-    <p>دُكان ستور ✨ | تواصل معنا عبر واتساب 0917311459</p>
-    <p>جميع الحقوق محفوظة 2026</p>
+<!-- SERVICES -->
+<div id="services" style="position:relative; z-index:1;">
+<div class="section">
+  <div class="section-header">
+    <div class="section-tag">خدماتنا</div>
+    <h2 class="section-title">جميع الاشتراكات الرقمية</h2>
+    <p class="section-sub">اختر ما يناسبك من أشهر المنصات العالمية بأسعار ليبية مناسبة</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card sc-netflix">
+      <div class="sc-top">
+        <div class="sc-icon">🎬</div>
+        <span class="sc-hot">الأكثر طلباً</span>
+      </div>
+      <div class="sc-name">Netflix</div>
+      <div class="sc-desc">مشاهدة أفلام ومسلسلات عالمية بجودة 4K على جميع الأجهزة</div>
+      <div class="sc-pricing">
+        <div>
+          <div class="sc-price-from">يبدأ من</div>
+          <div class="sc-price-val">12 د.ل <small>/ شهر</small></div>
+        </div>
+        <a href="https://wa.me/218917311459" class="sc-order-btn">اطلب الآن</a>
+      </div>
+    </div>
+
+    <div class="service-card sc-spotify">
+      <div class="sc-top">
+        <div class="sc-icon">🎵</div>
+      </div>
+      <div class="sc-name">Spotify Premium</div>
+      <div class="sc-desc">استمع لموسيقاك المفضلة بدون إعلانات وبجودة صوت عالية</div>
+      <div class="sc-pricing">
+        <div>
+          <div class="sc-price-from">يبدأ من</div>
+          <div class="sc-price-val">8 د.ل <small>/ شهر</small></div>
+        </div>
+        <a href="https://wa.me/218917311459" class="sc-order-btn">اطلب الآن</a>
+      </div>
+    </div>
+
+    <div class="service-card sc-canva">
+      <div class="sc-top">
+        <div class="sc-icon">🎨</div>
+        <span class="sc-hot">مميز</span>
+      </div>
+      <div class="sc-name">Canva Pro</div>
+      <div class="sc-desc">صمم بشكل احترافي مع قوالب حصرية وأدوات AI متقدمة</div>
+      <div class="sc-pricing">
+        <div>
+          <div class="sc-price-from">يبدأ من</div>
+          <div class="sc-price-val">10 د.ل <small>/ شهر</small></div>
+        </div>
+        <a href="https://wa.me/218917311459" class="sc-order-btn">اطلب الآن</a>
+      </div>
+    </div>
+
+    <div class="service-card sc-office">
+      <div class="sc-top">
+        <div class="sc-icon">📊</div>
+      </div>
+      <div class="sc-name">Microsoft 365</div>
+      <div class="sc-desc">Word, Excel, PowerPoint وكل تطبيقات أوفيس بنسختها الكاملة</div>
+      <div class="sc-pricing">
+        <div>
+          <div class="sc-price-from">يبدأ من</div>
+          <div class="sc-price-val">15 د.ل <small>/ شهر</small></div>
+        </div>
+        <a href="https://wa.me/218917311459" class="sc-order-btn">اطلب الآن</a>
+      </div>
+    </div>
+
+    <div class="service-card sc-yt">
+      <div class="sc-top">
+        <div class="sc-icon">▶️</div>
+      </div>
+      <div class="sc-name">YouTube Premium</div>
+      <div class="sc-desc">يوتيوب بدون إعلانات مع إمكانية التحميل والتشغيل في الخلفية</div>
+      <div class="sc-pricing">
+        <div>
+          <div class="sc-price-from">يبدأ من</div>
+          <div class="sc-price-val">9 د.ل <small>/ شهر</small></div>
+        </div>
+        <a href="https://wa.me/218917311459" class="sc-order-btn">اطلب الآن</a>
+      </div>
+    </div>
+
+    <div class="service-card sc-discord">
+      <div class="sc-top">
+        <div class="sc-icon">💜</div>
+      </div>
+      <div class="sc-name">Discord Nitro</div>
+      <div class="sc-desc">حسابك المميز على ديسكورد مع إيموجيات وصلاحيات Nitro كاملة</div>
+      <div class="sc-pricing">
+        <div>
+          <div class="sc-price-from">يبدأ من</div>
+          <div class="sc-price-val">10 د.ل <small>/ شهر</small></div>
+        </div>
+        <a href="https://wa.me/218917311459" class="sc-order-btn">اطلب الآن</a>
+      </div>
+    </div>
+
+    <div class="service-card sc-adobe">
+      <div class="sc-top">
+        <div class="sc-icon">🖼️</div>
+        <span class="sc-hot">جديد</span>
+      </div>
+      <div class="sc-name">Adobe Creative</div>
+      <div class="sc-desc">Photoshop, Illustrator, Premiere وكل أدوات أدوبي الاحترافية</div>
+      <div class="sc-pricing">
+        <div>
+          <div class="sc-price-from">يبدأ من</div>
+          <div class="sc-price-val">25 د.ل <small>/ شهر</small></div>
+        </div>
+        <a href="https://wa.me/218917311459" class="sc-order-btn">اطلب الآن</a>
+      </div>
+    </div>
+
+    <div class="service-card sc-prime">
+      <div class="sc-top">
+        <div class="sc-icon">📦</div>
+      </div>
+      <div class="sc-name">Amazon Prime</div>
+      <div class="sc-desc">أفلام ومسلسلات أمازون الأصلية مع مزايا Prime الكاملة</div>
+      <div class="sc-pricing">
+        <div>
+          <div class="sc-price-from">يبدأ من</div>
+          <div class="sc-price-val">11 د.ل <small>/ شهر</small></div>
+        </div>
+        <a href="https://wa.me/218917311459" class="sc-order-btn">اطلب الآن</a>
+      </div>
+    </div>
+  </div>
 </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="steps-wrap">
+  <div class="steps-inner">
+    <div class="section-header">
+      <div class="section-tag">كيف تطلب؟</div>
+      <h2 class="section-title">٤ خطوات بسيطة</h2>
+      <p class="section-sub">عملية الطلب سهلة وسريعة — تستغرق أقل من ٥ دقائق</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">١</div>
+        <div class="step-title">اختر الخدمة</div>
+        <div class="step-desc">تصفح الكاتالوج واختر الاشتراك اللي يناسبك</div>
+      </div>
+      <div class="step">
+        <div class="step-num">٢</div>
+        <div class="step-title">تواصل معنا</div>
+        <div class="step-desc">اضغط "اطلب الآن" وانتقل مباشرة لواتساب</div>
+      </div>
+      <div class="step">
+        <div class="step-num">٣</div>
+        <div class="step-title">ادفع بسهولة</div>
+        <div class="step-desc">ليبيانا، مدار أو تحويل مصرفي — على راحتك</div>
+      </div>
+      <div class="step">
+        <div class="step-num">٤</div>
+        <div class="step-title">استلم فوراً</div>
+        <div class="step-desc">تسليم الاشتراك خلال دقائق بعد التأكيد</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div style="position:relative; z-index:1; background: var(--bg);">
+<div class="section">
+  <div class="section-header">
+    <div class="section-tag">لماذا دوكان ستور؟</div>
+    <h2 class="section-title">ثق فينا بكل اطمئنان</h2>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="trust-icon">⚡</div>
+      <div class="trust-title">تسليم فوري</div>
+      <div class="trust-desc">نسلمك اشتراكك في دقائق بعد التأكيد، ما في انتظار ولا تأخير</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">🛡️</div>
+      <div class="trust-title">ضمان كامل المدة</div>
+      <div class="trust-desc">لو حصل أي مشكلة في الاشتراك نجددلك مجاناً طول مدة الاشتراك</div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">💰</div>
+      <div class="trust-title">أفضل الأسعار</div>
+      <div class="trust-desc">أسعار مناسبة للسوق الليبي بدون رسوم خفية أو مفاجآت</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- REVIEWS -->
+<div style="position:relative; z-index:1; background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 5%;">
+<div style="max-width:1300px; margin:0 auto;">
+  <div class="section-header">
+    <div class="section-tag">آراء العملاء</div>
+    <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">خدمة ممتازة وتسليم سريع جداً، اشتريت نتفليكس وجاني الاشتراك في أقل من ٥ دقائق. ينصح بيه!</div>
+      <div class="review-author">
+        <div class="review-avatar" style="background: linear-gradient(135deg,#00d4ff,#0099cc);">م</div>
+        <div>
+          <div class="review-name">محمد الكيلاني</div>
+          <div class="review-city">طرابلس، ليبيا</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">اشتريت كانفا برو وأوفيس، كل شيء تمام وبضمان. الدعم متجاوب وشاطر في المساعدة.</div>
+      <div class="review-author">
+        <div class="review-avatar" style="background: linear-gradient(135deg,#7c3aed,#5b21b6);">س</div>
+        <div>
+          <div class="review-name">سارة أبو بكر</div>
+          <div class="review-city">بنغازي، ليبيا</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">متجر موثوق ومجرب، اشتري عنده من أكثر من سنة ما خذلني مرة. أسعاره كويسة وخدمته أكويس.</div>
+      <div class="review-author">
+        <div class="review-avatar" style="background: linear-gradient(135deg,#f59e0b,#d97706);">أ</div>
+        <div>
+          <div class="review-name">أحمد الفيتوري</div>
+          <div class="review-city">مصراتة، ليبيا</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-box">
+    <h2>جاهز تطلب الآن؟</h2>
+    <p>تواصل معنا مباشرة على واتساب وسنساعدك باختيار أفضل اشتراك يناسبك بأقل سعر</p>
+    <a href="https://wa.me/218917311459" class="wa-big-btn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      تواصل معنا على واتساب
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="logo"><span>دوكان</span><span>ستور</span></div>
+    <div class="footer-copy">© 2025 دوكان ستور — جميع الحقوق محفوظة</div>
+    <div class="footer-links">
+      <a href="#">سياسة الخصوصية</a>
+      <a href="#">الشروط والأحكام</a>
+      <a href="https://wa.me/218917311459">واتساب</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
